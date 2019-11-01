@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:elevation="10dp">
+
+    <View
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:background="@drawable/view_end_job"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/job_detail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/bullet"/>
+
+    <LinearLayout
+        android:id="@+id/job_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/ic_job_background"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bullet"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="48dp"
+            android:fontFamily="@font/helvetica_bold_font"
+            android:text="@string/job_id"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/value_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="48dp"
+            android:layout_marginRight="48dp"
+            android:fontFamily="@font/helvetica_light"
+            android:text="value"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

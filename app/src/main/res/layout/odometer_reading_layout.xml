@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="8dp">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/number_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/odo_meter_reading">
+
+    <EditText
+        android:id="@+id/et_odo_meter_reading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="5dp"
+        android:singleLine="true"
+        android:inputType="number"
+        android:textColorHint="@color/hint_color"
+        android:textSize="16sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/img_camera_odo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/tv_gas_comment"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:focusable="true"
+        android:src="@drawable/ic_photo_camera" />
+
+    <TextView
+        android:id="@+id/tv_gas_comment"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="0dp"
+        android:drawableTop="@drawable/ic_plus_symbol"
+        android:text="@string/add_comment"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/empty_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_error"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@id/number_input_layout"/>
+
+    <RadioGroup
+        android:visibility="gone"
+        android:id="@+id/option_group_gas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/empty_text"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/option_gas_cash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_cash" />
+
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/option_gas_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_card" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_gas_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/option_group_gas"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-8dp"
+        android:layout_marginBottom="-8dp"
+        android:background="@drawable/mask_2"
+        android:maxLines="3"
+        android:minLines="3"
+        android:visibility="gone" />
+</RelativeLayout>

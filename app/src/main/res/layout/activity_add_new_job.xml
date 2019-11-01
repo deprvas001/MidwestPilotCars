@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="addJobRequestModel"
+            type="com.midwestpilotcars.models.createJob.AddJobRequestModel" />
+
+        <variable
+            name="loadType"
+            type="com.midwestpilotcars.models.allDefaultModels.LOADTYPE" />
+
+        <variable
+            name="truckingCompany"
+            type="com.midwestpilotcars.models.allDefaultModels.TRUCKINGCOMPANY" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background"
+        android:fitsSystemWindows="true"
+        tools:context=".views.createJob.AddNewJobActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="80dp"
+            android:scrollbarSize="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/number_input_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:hint="@string/select_date"
+                    android:layout_marginBottom="5dp"
+                     >
+
+                <EditText
+                    android:id="@+id/et_select_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:background="@drawable/edit_text_background"
+                    android:drawableEnd="@drawable/ic_calendar"
+                    android:drawableRight="@drawable/ic_calendar"
+                    android:drawablePadding="5dp"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:clickable="true"
+
+                    android:text="@={addJobRequestModel.jobStartDate}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                  <TextView
+                      android:id="@+id/select_date_view"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:padding="10dp"
+                      android:layout_marginLeft="10dp"
+                      android:visibility="gone"
+                      android:textSize="10sp"
+                      android:textColor="@color/red_color"
+                      android:text="@string/error_field_empty"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/start_location"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_start_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:background="@drawable/edit_text_background"
+                    android:drawableEnd="@drawable/ic_target"
+                    android:drawableRight="@drawable/ic_target"
+                    android:drawablePadding="5dp"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:text="@={addJobRequestModel.jobStartingPoint}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/start_location_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/driver_name"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_driver_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobTruckDriverName}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/driver_name_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/end_location"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_end_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:drawableEnd="@drawable/ic_target"
+                    android:drawableRight="@drawable/ic_target"
+                    android:drawablePadding="5dp"
+                    android:editable="false"
+
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:text="@={addJobRequestModel.jobEndingPoint}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/end_location_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/trcking_company"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_trucking_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:drawableEnd="@drawable/ic_down_arrow"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:drawablePadding="5dp"
+                    android:editable="false"
+                    android:text="@{truckingCompany.truckingCompanyName}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/truck_company_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/load_no"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_load_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobLoadNumber}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/load_no_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/dot_no"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_dot_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobDotNumber}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/dot_no_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/truck_number"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_truck_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobTruckNumber}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/truck_no_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/truck_driver_number"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_truck_drive_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:inputType="number|phone"
+                    android:maxLength="15"
+                    android:drawablePadding="5dp"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobTruckDriverPhoneNumber}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/truck_driver_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:visibility="gone"
+                    android:textSize="10sp"
+                    android:textColor="@color/red_color"
+                    android:text="@string/error_field_empty"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/load_type"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_load_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:drawableEnd="@drawable/ic_down_arrow"
+                    android:drawableRight="@drawable/ic_down_arrow"
+                    android:drawablePadding="5dp"
+                    android:editable="false"
+                    android:text="@{loadType.loadTypeName}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/load_type_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/load_description"
+                    android:layout_height="wrap_content"
+                    >
+                <EditText
+                    android:id="@+id/et_load_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:background="@drawable/edit_text_background"
+                    android:singleLine="true"
+
+                    android:text="@={loadType.loadTypeDescription}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/load_desc_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/cash_advance"
+                    android:layout_height="wrap_content"
+                    >
+                <EditText
+                    android:id="@+id/et_cash_advance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobCashInAdvance}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/cash_advance_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/truck_width"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_truck_width"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobTruckWidth}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/truck_width_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/truck_height"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_truck_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobTruckHeight}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/truck_height_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:visibility="gone"
+                        android:textSize="10sp"
+                        android:textColor="@color/red_color"
+                        android:text="@string/error_field_empty"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/truck_weight"
+                    android:layout_height="wrap_content"
+                    >
+
+                <EditText
+                    android:id="@+id/et_truck_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobTruckWeight}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginBottom="12dp"
+                    android:layout_width="match_parent"
+                    android:hint="@string/truck_length"
+                    android:layout_height="wrap_content"
+                    >
+
+
+                <EditText
+                    android:id="@+id/et_truck_length"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/edit_text_background"
+
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:text="@={addJobRequestModel.jobTruckLenght}"
+                    android:textColorHint="@color/hint_color"
+                    android:textSize="16sp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@android:color/white"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:text="@string/add_job"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_btn_add_job"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/add_job_circle"
+            android:elevation="10dp"
+            android:src="@drawable/ic_tick"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/progressBar"
+            android:visibility="gone"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

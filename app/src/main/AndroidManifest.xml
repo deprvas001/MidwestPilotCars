@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.midwestpilotcars">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+
+    <application
+        android:name=".MidwestPilotCars"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".views.activities.WalletScreen"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".views.activities.ExpenseDayAdd2"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.activities.BackTrip"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".views.activities.SignatureScreen"
+            android:screenOrientation="portrait"
+            android:label="@string/signature" />
+        <activity android:name=".views.activities.EndFormViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.activities.EndForm"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".views.activities.ExpenseDayAdd"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".views.activities.ExpenseDayActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.activities.Day1Expense"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.activities.ViewCompleteJob"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.activities.CompletedJobActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".models.addDayExpenses.AddDayExpenses"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.startJob.StartJobActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.activities.CaptureSignatureActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.activities.ViewJobActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.createJob.AddNewJobActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".views.activities.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".views.resetPassword.ResetPassword"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".views.forgotPassword.ForgotPassword"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".views.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/app_name" />
+        <activity android:name=".views.activities.MapActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:screenOrientation="portrait"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAj2mPqaBLScPUND6GGcVvaWGOPOAYKETg" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
+    </application>
+
+</manifest>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="expenses"
+            type="com.midwestpilotcars.models.addDayExpenses.GasExpensesModel"/>
+        <import type="android.view.View"/>
+    </data>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="8dp">
+
+    <EditText
+        android:id="@+id/et_motel_expenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="5dp"
+        android:hint="@string/motel_expenses"
+        android:textColorHint="@color/hint_color"
+        android:textSize="16sp"
+        android:text="@={expenses.expensePrice}"/>
+
+    <ImageView
+        android:id="@+id/img_camera_motel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="110dp"
+        android:layout_toLeftOf="@id/tv_motel_comment"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:focusable="true"
+        android:src="@drawable/ic_photo_camera" />
+
+    <TextView
+        android:id="@+id/tv_motel_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="0dp"
+        android:drawableTop="@drawable/ic_plus_symbol"
+        android:hint="@string/add_comment"
+        android:text="@={expenses.expenseComment}"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        />
+
+    <RadioGroup
+        android:id="@+id/option_group_motel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_motel_expenses"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/option_cash_motel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_cash" />
+
+        <RadioButton
+            android:id="@+id/option_card_motel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_card" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_motel_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/option_group_motel"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-8dp"
+        android:layout_marginBottom="-8dp"
+        android:background="@drawable/mask_2"
+        android:maxLines="3"
+        android:minLines="3"
+        android:visibility="gone" />
+</RelativeLayout>
+</layout>

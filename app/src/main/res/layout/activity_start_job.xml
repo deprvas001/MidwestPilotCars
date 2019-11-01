@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="startJobModel"
+            type="com.midwestpilotcars.models.startJob.StartJobRequestModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="75dp"
+            android:scrollbarSize="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:context=".views.activities.ViewJobActivity">
+
+                <include
+                    android:id="@+id/driver_name_layout"
+                    layout="@layout/layout_job_detail_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/trucking_company_layout"
+                    layout="@layout/layout_job_detail_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/load_no_layout"
+                    layout="@layout/layout_job_detail_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/truck_no_layout"
+                    layout="@layout/layout_job_detail_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/load_description_layout"
+                    layout="@layout/layout_job_detail_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/phone_no_view"
+                    layout="@layout/layout_job_detail_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/cash_advance_view"
+                    layout="@layout/layout_job_detail_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="#d8d8d8" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/number_input_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/driver_position"
+                    >
+
+                    <EditText
+                        android:id="@+id/et_load_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/edit_text_background"
+                        android:drawableEnd="@drawable/ic_down_arrow"
+                        android:drawableRight="@drawable/ic_down_arrow"
+                        android:drawablePadding="5dp"
+                        android:editable="false"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/odo_meter_reading"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_odo_meter"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="16dp"
+                            android:maxLines="1"
+                            android:inputType="numberDecimal"
+                            android:singleLine="true"
+                            android:text="@={startJobModel.jobPilotVehileOdometerReading}"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/img_camera_odo_meter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginRight="30dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_marginTop="30dp"
+                        android:elevation="5dp"
+                        android:src="@drawable/ic_photo_camera" />
+                </RelativeLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/start_location"
+                    >
+
+                    <EditText
+                        android:id="@+id/et_start_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/edit_text_background"
+                        android:drawableEnd="@drawable/ic_target"
+                        android:drawableRight="@drawable/ic_target"
+                        android:drawablePadding="5dp"
+                        android:editable="false"
+                        android:text="@={startJobModel.jobPilotDriverStartLocation}"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/date_time_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/select_date"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="100dp"
+                        android:layout_marginRight="100dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_select_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/edit_text_background"
+                            android:drawableEnd="@drawable/ic_calendar"
+                            android:drawableRight="@drawable/ic_calendar"
+                            android:drawablePadding="10dp"
+                            android:editable="false"
+                            android:text="@={startJobModel.jobStartDateTime}"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_date_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableTop="@drawable/ic_plus_symbol"
+                        android:text="@string/add_comment"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+
+                    <EditText
+                        android:id="@+id/et_date_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/date_time_layout"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="-8dp"
+                        android:layout_marginBottom="-8dp"
+                        android:background="@drawable/mask_2"
+                        android:maxLines="3"
+                        android:minLines="3"
+                        android:text="@={startJobModel.jobStartDateTimeComment}"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/per_mile_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="100dp"
+                        android:hint="@string/per_mile_cost"
+                        android:layout_marginRight="100dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_per_mile_cost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/edit_text_background"
+                            android:drawableEnd="@mipmap/dollar"
+                            android:drawableRight="@mipmap/dollar"
+                            android:drawablePadding="5dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_per_mile_cost_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableTop="@drawable/ic_plus_symbol"
+                        android:text="@string/add_comment"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="25dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/et_per_mile_cost_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/per_mile_layout"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="-8dp"
+                        android:layout_marginBottom="-8dp"
+                        android:background="@drawable/mask_2"
+                        android:maxLines="3"
+                        android:minLines="3"
+                        android:text="@={startJobModel.jobPayPerMileCostComment}"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/per_day_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="100dp"
+                        android:hint="@string/per_day_cost"
+                        android:layout_marginRight="100dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_per_day_cost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_background"
+                            android:drawableEnd="@mipmap/dollar"
+                            android:drawableRight="@mipmap/dollar"
+                            android:drawablePadding="5dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_per_day_cost_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableTop="@drawable/ic_plus_symbol"
+                        android:text="@string/add_comment"
+                        android:layout_marginTop="25dp"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/et_per_day_cost_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/per_day_layout"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="-8dp"
+                        android:layout_marginBottom="-8dp"
+                        android:background="@drawable/mask_2"
+                        android:maxLines="3"
+                        android:minLines="3"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/no_go_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="100dp"
+                        android:hint="@string/no_go_day_rate"
+                        android:layout_marginRight="100dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_no_go_cost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawableEnd="@mipmap/dollar"
+                            android:drawableRight="@mipmap/dollar"
+                            android:drawablePadding="5dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_no_go_cost_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableTop="@drawable/ic_plus_symbol"
+                        android:text="@string/add_comment"
+                        android:layout_marginTop="25dp"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/et_no_go_cost_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/no_go_layout"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="-8dp"
+                        android:layout_marginBottom="-8dp"
+                        android:background="@drawable/mask_2"
+                        android:maxLines="3"
+                        android:minLines="3"
+                        android:text="@={startJobModel.jobNoGoesPriceComment}"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/detention_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginEnd="100dp"
+                        android:hint="@string/detention_price"
+                        android:layout_marginRight="100dp"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_detention_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawableEnd="@mipmap/dollar"
+                            android:drawableRight="@mipmap/dollar"
+                            android:drawablePadding="5dp"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tv_detention_price_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:drawableTop="@drawable/ic_plus_symbol"
+                        android:text="@string/add_comment"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="25dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/et_detention_price_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/detention_layout"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="-8dp"
+                        android:layout_marginBottom="-8dp"
+                        android:background="@drawable/mask_2"
+                        android:maxLines="3"
+                        android:minLines="3"
+                        android:text="@={startJobModel.jobDetentionPriceComment}"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/load_no"
+
+                    >
+
+                    <EditText
+                        android:id="@+id/et_load_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/edit_text_background"
+                        android:drawablePadding="5dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/load_description"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_load_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/dot_no"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_job_dot"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/driver_name"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_driver_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/truck_driver_number"
+
+                        >
+
+                        <EditText
+                            android:id="@+id/et_driver_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLength="15"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/cash_advance_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cash_advance"
+                    >
+
+                    <EditText
+                        android:id="@+id/et_cash_advance_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/edit_text_background"
+                        android:drawableEnd="@mipmap/dollar"
+                        android:drawablePadding="5dp"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColorHint="@color/hint_color"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/truck_number"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_truck_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLength="15"
+                            android:maxLines="1"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/truck_height"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_truck_height"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLength="15"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/truck_width"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_truck_width"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLength="15"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/truck_weight"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_truck_weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLength="15"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/truck_length"
+                        >
+
+                        <EditText
+                            android:id="@+id/et_truck_length"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="40dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLength="15"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/job_comment_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/job_comment"
+
+                        >
+
+                        <EditText
+                            android:id="@+id/et_job_comment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="40dp"
+                            android:background="@drawable/edit_text_background"
+                            android:drawablePadding="5dp"
+                            android:maxLength="15"
+                            android:inputType="numberDecimal"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="16sp" />
+
+                    </android.support.design.widget.TextInputLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:background="@android:color/white"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/helvetica_bold_font"
+                android:text="@string/start_job"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/img_btn_add_job"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/start_job_circle"
+            android:elevation="10dp"
+            android:src="@drawable/ic_start_job"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

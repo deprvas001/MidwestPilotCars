@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="75dp"
+        android:scrollbarSize="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/complete_view_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".views.activities.ViewJobActivity">
+
+            <include
+                android:id="@+id/job_start_date_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <include
+                android:id="@+id/driver_name_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/trucking_company_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_no_layout"
+                layout="@layout/layout_job_detail_card"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/truck_no_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_description_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_type_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_type_name_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_dot_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_driver_no_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_truck_width_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_truck_height_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_starting_point_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_ending_point_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_gas_expense_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_gas_expense_deduction_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/new_total_gas_expense_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_motel_expense_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_motel_expense_deduction_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/new_toal_motel_expense_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_other_expense_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_other_expense_deduction_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/new_toal_other_expense_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_day_rate_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_no_goes_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_price_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_down_time_price_per_hour_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_down_time_hours_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_down_time_hours_price_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_miles_travelled_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_card_deduction_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_pay_to_driver_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/cash_in_advance_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_pay_per_mile_cost_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_per_day_cost_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_no_goes_price_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_detention_price_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/end_trip_status_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/days_filled_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <include
+                android:id="@+id/job_comments_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/trucking_company_id_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/trucking_company_rep_name_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_truck_load_type_id_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

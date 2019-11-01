@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    tools:context=".models.addDayExpenses.AddDayExpenses">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="90dp"
+        android:scrollbarSize="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/app_background"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/odo_layout"
+                layout="@layout/odometer_reading_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/number_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginBottom="12dp"
+                android:hint="@string/end_location">
+
+            <EditText
+                android:id="@+id/et_end_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+
+                android:background="@drawable/edit_text_background"
+                android:drawableEnd="@drawable/ic_target"
+                android:drawableRight="@drawable/ic_target"
+                android:drawablePadding="5dp"
+                android:editable="false"
+                android:focusable="false"
+                android:clickable="true"
+                android:textColorHint="@color/hint_color"
+                android:textSize="16sp" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/empty_text_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/empty_error"
+                android:paddingLeft="8dp"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/et_odo_meter_reading"/>
+
+            <include
+                android:id="@+id/end_layout"
+                layout="@layout/end_date_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/extra_layout"
+                layout="@layout/extra_pay_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_button_background"
+                android:text="@string/add_job"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:paddingBottom="10dp"
+                android:textColor="@android:color/white"
+                android:id="@+id/add_gas_expenses"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"></View>
+
+            <TextView
+                android:id="@+id/total_mile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="Total Miles - "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:layout_marginLeft="13dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/total_mile_done"
+                android:src="@drawable/ic_tick" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:scrollbars="vertical" >
+
+            </android.support.v7.widget.RecyclerView>
+
+            <include
+                android:id="@+id/total_m"
+                layout="@layout/total_miles"
+                android:visibility="gone"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="@android:color/white"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/helvetica_bold_font"
+            android:text="@string/next"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+
+    <ImageButton
+        android:id="@+id/img_btn_add_job"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/start_job_circle"
+        android:elevation="10dp"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

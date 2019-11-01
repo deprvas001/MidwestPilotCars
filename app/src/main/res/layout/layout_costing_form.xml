@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/costing_form_layout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="8dp">
+
+    <EditText
+        android:id="@+id/et_motel_expenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:background="@null"
+        android:drawablePadding="5dp"
+        android:editable="false"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:overScrollMode="always"
+        android:hint="@string/choose_costing"
+        android:paddingLeft="10dp"
+        android:textColorHint="@color/hint_color"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/img_camera_motel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="110dp"
+        android:layout_toLeftOf="@id/tv_motel_comment"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:focusable="true"
+        android:src="@drawable/ic_photo_camera"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_motel_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="0dp"
+        android:drawableTop="@drawable/ic_plus_symbol"
+        android:text="@string/add_comment"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <RadioGroup
+        android:id="@+id/option_group_miles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_motel_expenses"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/option_mile_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:text="@string/mile_travell" />
+
+        <RadioButton
+            android:id="@+id/option_day_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/per_day_rate" />
+
+        <RadioButton
+            android:id="@+id/option_mini_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mini" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_motel_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/option_group_miles"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-8dp"
+        android:layout_marginBottom="-8dp"
+        android:background="@drawable/mask_2"
+        android:maxLines="3"
+        android:minLines="3"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/mini_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_motel_comment"
+        android:visibility="gone">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/number_input_layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="100dp"
+            android:layout_marginRight="100dp"
+
+            android:hint="@string/enter_amount">
+
+
+            <EditText
+                android:id="@+id/et_mini_expenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/edit_text_background"
+                android:drawablePadding="5dp"
+                android:singleLine="true"
+
+
+                android:textColorHint="@color/hint_color"
+                android:textSize="16sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/img_camera_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="110dp"
+            android:layout_toLeftOf="@id/tv_mini_comment"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:focusable="true"
+            android:src="@drawable/ic_photo_camera"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tv_mini_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="0dp"
+            android:drawableTop="@drawable/ic_plus_symbol"
+            android:text="@string/add_comment"
+            android:textAllCaps="false"
+
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/et_mini_comment_decp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/number_input_layout1"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="-8dp"
+            android:layout_marginBottom="-8dp"
+            android:background="@drawable/mask_2"
+            android:maxLines="3"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:overScrollMode="always"
+            android:minLines="3"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

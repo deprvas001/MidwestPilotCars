@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="8dp">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/number_input_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/mile_travelled"
+        android:layout_marginEnd="100dp"
+
+        android:layout_marginRight="100dp">
+
+    <EditText
+        android:id="@+id/et_motel_expenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/edit_text_background"
+        android:drawablePadding="5dp"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColorHint="@color/hint_color"
+        android:textSize="16sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/img_camera_mil_motel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="110dp"
+        android:layout_toLeftOf="@id/tv_mile_comment"
+        android:clickable="true"
+        android:elevation="5dp"
+        android:focusable="true"
+        android:visibility="invisible"
+        android:src="@drawable/ic_photo_camera" />
+
+    <TextView
+        android:id="@+id/tv_mile_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="20dp"
+        android:drawableTop="@drawable/ic_plus_symbol"
+        android:text="@string/add_comment"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/empty_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Field can not empty"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="gone"
+        android:layout_below="@id/number_input_layout1"/>
+
+    <RadioGroup
+        android:id="@+id/option_group_motel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@id/number_input_layout1"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/option_cash_motel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_cash" />
+
+        <RadioButton
+            android:id="@+id/option_card_motel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_card" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_mile_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/empty_text"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-8dp"
+        android:layout_marginBottom="-8dp"
+        android:background="@drawable/mask_2"
+        android:maxLines="3"
+        android:minLines="3"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:overScrollMode="always"
+        android:visibility="gone" />
+</RelativeLayout>
+</layout>
