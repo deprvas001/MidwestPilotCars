@@ -107,7 +107,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="100dp"
             android:layout_marginRight="100dp"
-
             android:hint="@string/enter_amount">
 
 
@@ -119,8 +118,9 @@
                 android:background="@drawable/edit_text_background"
                 android:drawablePadding="5dp"
                 android:singleLine="true"
-
-
+                android:drawableLeft="@mipmap/dollar"
+                android:inputType="number"
+                android:maxLength="15"
                 android:textColorHint="@color/hint_color"
                 android:textSize="16sp" />
 

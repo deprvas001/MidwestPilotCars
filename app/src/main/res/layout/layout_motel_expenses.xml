@@ -24,7 +24,7 @@
         android:background="@drawable/edit_text_background"
         android:drawablePadding="5dp"
         android:singleLine="true"
-
+        android:drawableLeft="@mipmap/dollar"
         android:textColorHint="@color/hint_color"
         android:textSize="16sp" />
 
@@ -153,6 +153,7 @@
             android:drawablePadding="5dp"
             android:singleLine="true"
             android:inputType="number"
+            android:drawableLeft="@mipmap/dollar"
             android:textColorHint="@color/hint_color"
             android:textSize="16sp" />
 

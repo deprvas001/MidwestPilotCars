@@ -116,15 +116,15 @@ public class NewJobsAdapter extends RecyclerView.Adapter<NewJobsAdapter.ViewHold
         if (jobType == 0) {
             viewHolder.carImage.setBackgroundResource(R.mipmap.new_job_car);
             viewHolder.logisticName.setText(upcomingJobModel.get(i).getTruckingCompanyName());
-            viewHolder.carName.setText(upcomingJobModel.get(i).getLoadTypeName());
+            viewHolder.carName.setText(upcomingJobModel.get(i).getLoadTypeName()+"\n"+"Start Date: "+upcomingJobModel.get(i).getJobStartDate());
         } else if (jobType == 1) {
             viewHolder.carImage.setBackgroundResource(R.mipmap.ongoing_car);
             viewHolder.logisticName.setText(ongoingArrayList.get(i).getTruckingCompanyName());
-            viewHolder.carName.setText(ongoingArrayList.get(i).getLoadTypeName());
+            viewHolder.carName.setText(ongoingArrayList.get(i).getLoadTypeName()+"\n"+"Start Date: "+ongoingArrayList.get(i).getJobStartDate());
         } else if (jobType == 2) {
             viewHolder.carImage.setBackgroundResource(R.mipmap.completed_car);
             viewHolder.logisticName.setText(completeArrayList.get(i).getTruckingCompanyName());
-            viewHolder.carName.setText(completeArrayList.get(i).getLoadTypeName());
+            viewHolder.carName.setText(completeArrayList.get(i).getLoadTypeName()+"\n"+"Start Date: "+completeArrayList.get(i).getJobStartDate());
         }
 
     }

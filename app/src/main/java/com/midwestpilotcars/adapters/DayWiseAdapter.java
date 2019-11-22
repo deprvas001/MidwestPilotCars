@@ -23,10 +23,8 @@ public class DayWiseAdapter extends RecyclerView.Adapter<DayWiseAdapter.MyViewHo
             super(view);
             day_travell = (TextView) view.findViewById(R.id.day_travell);
             end_destination = (ImageView)view.findViewById(R.id.end_destination);
-
         }
     }
-
 
     public DayWiseAdapter(List<DayWiseTravell> day_List) {
         this.day_List = day_List;

@@ -102,7 +102,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAj2mPqaBLScPUND6GGcVvaWGOPOAYKETg" />
+            android:value="AIzaSyA4mjnDAmUpOBpBqL8VQvf3hFfYQPYAiBY" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"

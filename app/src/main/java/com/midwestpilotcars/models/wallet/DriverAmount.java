@@ -7,6 +7,16 @@ public class DriverAmount {
     String approx_pay;
     @SerializedName("walletData")
     WalletData walletData;
+    @SerializedName("AllDayData")
+    AllDayAmount allDayAmount;
+
+    public AllDayAmount getAllDayAmount() {
+        return allDayAmount;
+    }
+
+    public void setAllDayAmount(AllDayAmount allDayAmount) {
+        this.allDayAmount = allDayAmount;
+    }
 
 
     public String getApprox_pay() {

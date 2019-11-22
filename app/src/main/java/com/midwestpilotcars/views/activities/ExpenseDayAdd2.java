@@ -934,12 +934,11 @@ public class ExpenseDayAdd2 extends BaseActivity implements View.OnClickListener
             params.put("no_go_day_comment", no_go_comment.getText().toString());
             params.put("mini_amount", mini_amount.getText().toString());
             params.put("mini_comment", mini_descp.getText().toString());
+            params.put("update_day_expense_id",day_update_id);
 
 
             if (isdayChecked) {
                 params.put("end_trip_status", "1");
-            }else{
-                params.put("update_day_expense_id",day_update_id);
             }
 
             final String mRequestBody = params.toString();

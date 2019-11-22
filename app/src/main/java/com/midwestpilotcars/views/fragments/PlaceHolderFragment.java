@@ -75,7 +75,6 @@ public class PlaceHolderFragment extends Fragment {
         empty_view = view.findViewById(R.id.empty_view);
         jobsRecyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
         jobsRecyclerView.setHasFixedSize(true);
-
     }
 
     public void setNewJobData(ArrayList<UPCOMING> upcoming) {

@@ -46,9 +46,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="38dp"
-                    android:hint="@string/select_date"
+                    android:hint="@string/start_date"
                     android:layout_marginBottom="5dp"
-                     >
+                    >
 
                 <EditText
                     android:id="@+id/et_select_date"
@@ -424,6 +424,8 @@
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/edit_text_background"
                     android:inputType="number"
+                    android:drawableLeft="@mipmap/dollar"
+                    android:drawablePadding="5dp"
                     android:singleLine="true"
                     android:text="@={addJobRequestModel.jobCashInAdvance}"
                     android:textColorHint="@color/hint_color"

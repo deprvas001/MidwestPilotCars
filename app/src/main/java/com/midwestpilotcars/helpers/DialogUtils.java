@@ -35,6 +35,7 @@ public class DialogUtils {
 
         DatePickerDialog mDate = new DatePickerDialog(context, dateSetListener, mYear, mMonth, mDay);
         mDate.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+       // mDate.getDatePicker().setMaxDate(System.currentTimeMillis() );
         mDate.show();
     }
 

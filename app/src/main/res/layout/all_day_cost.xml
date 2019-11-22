@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/signature_own"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/total_day_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:paddingTop="10dp" />
+
+
+
+        <TextView
+            android:id="@+id/total_motel_expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_below="@id/total_day_rate" />
+
+        <TextView
+            android:id="@+id/total_gas_expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_below="@id/total_motel_expense" />
+
+        <TextView
+            android:id="@+id/total_other_expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_below="@id/total_gas_expense"/>
+
+        <TextView
+            android:id="@+id/main_total_days_expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_below="@id/total_other_expense"/>
+
+        <TextView
+            android:id="@+id/main_total_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_below="@id/main_total_days_expense"/>
+
+        <TextView
+            android:id="@+id/main_total_card_expense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_below="@id/main_total_price"/>
+
+        <TextView
+            android:id="@+id/main_total_down_time_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_below="@id/main_total_card_expense"/>
+
+        <TextView
+            android:id="@+id/total_down_time_hours"
+            android:layout_width="match_parent"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_total_down_time_price" />
+
+        <TextView
+            android:id="@+id/main_extra_pay_to_driver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:layout_below="@id/total_down_time_hours"/>
+
+        <TextView
+            android:id="@+id/total_pay_to_driver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@id/main_extra_pay_to_driver"/>
+
+
+
+    </RelativeLayout>
+
+</layout>

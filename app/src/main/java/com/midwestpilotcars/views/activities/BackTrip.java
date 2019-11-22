@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -43,19 +47,25 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.midwestpilotcars.R;
+import com.midwestpilotcars.adapters.AllDayExpenseAdapter;
+import com.midwestpilotcars.adapters.DayWiseAdapter;
 import com.midwestpilotcars.apiInterface.CompleteJobApi;
 import com.midwestpilotcars.base.BaseActivity;
 import com.midwestpilotcars.constants.AppConstants;
+import com.midwestpilotcars.databinding.ActivityBackTripBinding;
 import com.midwestpilotcars.helpers.DialogUtils;
 import com.midwestpilotcars.helpers.SharedPreferenceHelper;
 import com.midwestpilotcars.helpers.Utils;
 import com.midwestpilotcars.models.addDayExpenses.DataPerDay;
 import com.midwestpilotcars.models.addDayExpenses.DayDetails;
+import com.midwestpilotcars.models.addDayExpenses.DayExperPerDay;
 import com.midwestpilotcars.models.addDayExpenses.DayGasExpense;
 import com.midwestpilotcars.models.addDayExpenses.DayMotelExpense;
 import com.midwestpilotcars.models.addDayExpenses.OtherExpenseModel;
 import com.midwestpilotcars.models.getAllJobs.ONGOING;
+import com.midwestpilotcars.models.wallet.AllDayAmount;
 import com.midwestpilotcars.models.wallet.ApproxAmountPay;
+import com.midwestpilotcars.models.wallet.DayExpense;
 import com.midwestpilotcars.models.wallet.DriverAmount;
 import com.midwestpilotcars.models.wallet.WalletData;
 import com.midwestpilotcars.models.wallet.WalletModel;
@@ -96,6 +106,8 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
             mile_descrp_comment, et_gas_expense, et_motel_expense, et_other_expense, et_down_expense, et_mile_expense;
     RadioGroup gas_expense_radio, motel_expense_radio, other_expense_radio, advance_cash;
     int id = 0;
+    AllDayExpenseAdapter expenseAdapter;
+    RecyclerView recyclerView;
     int check_id = 0;
     File fileToS3;
     String gas_expense_image = "", motel_expense_image = "", other_expense_image = "";
@@ -108,7 +120,7 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
     private ONGOING ongoingArrayList;
     String job_id = "";
     View view;
-
+    ActivityBackTripBinding activityBackTripBinding;
     EditText add_more_expense_price, add_more_expense_comment, add_more_expense_motel,
             add_more_motel_descp, add_more_expense_other, add_more_other_descp, cash_amount_et;
     TextView add_more_gas, add_more_gas_comment, add_more_motel,
@@ -123,6 +135,7 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_back_trip);
+        activityBackTripBinding = DataBindingUtil.setContentView(this,R.layout.activity_back_trip);
         getSupportActionBar().setTitle(getString(R.string.back_trip));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initializeView();
@@ -130,15 +143,10 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
         if( getIntent().getExtras() != null)
         {
             job_id = getIntent().getExtras().getString(AppConstants.JOB_KEY);
-            ongoingArrayList = (ONGOING) this.getIntent().getParcelableExtra(AppConstants.JOBS_ONGOING);
-            String amount = getIntent().getExtras().getString(AppConstants.APPROX_PAY_AMOUNT);
+           /* ongoingArrayList = (ONGOING) this.getIntent().getParcelableExtra(AppConstants.JOBS_ONGOING);
+            String amount = getIntent().getExtras().getString(AppConstants.APPROX_PAY_AMOUNT);*/
 
             getDriverWallet();
-           /* if(amount!=null){
-                et_approx_amount.setText(getResources().getString(R.string.approx_amount)+" : $"+amount);
-            }else{
-                  getDriverWallet();
-            }*/
         }
 
         // callback method to call credentialsProvider method.
@@ -239,6 +247,10 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
         et_pending_amount = (TextView) view.findViewById(R.id.pending_amount);
         cash_amount_et = (EditText) view.findViewById(R.id.cash_amount_edittext);
         advance_cash = (RadioGroup) view.findViewById(R.id.option_group_cash);
+
+        recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+
+
 
         gas_expense_radio.setOnCheckedChangeListener(this);
         motel_expense_radio.setOnCheckedChangeListener(this);
@@ -1003,9 +1015,21 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
                                 String wallet_amount = data.getWalletData().getWallet_amount();
                                 String pending_amount = data.getWalletData().getPending_amount();
 
+                                AllDayAmount dayAmount = data.getAllDayAmount();
+                                List<DayExpense> day_expense_list =dayAmount.getDayExpenses();
+
+
                                 et_wallet_amount.setText(getResources().getString(R.string.wallet_amount)+" : $"+wallet_amount);
                                 et_pending_amount.setText(getResources().getString(R.string.pending_amount)+" : $"+pending_amount);
                                 et_approx_amount.setText(getResources().getString(R.string.approx_amount)+" : $"+approx_amount);
+
+                                expenseAdapter = new AllDayExpenseAdapter(day_expense_list);
+                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                                recyclerView.setLayoutManager(mLayoutManager);
+                                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                                recyclerView.setAdapter(expenseAdapter);
+
+                                setTotalDayRecord(dayAmount);
                             }
                             hideProgressDialog();
                         }else{
@@ -1030,6 +1054,39 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
             hideProgressDialog();
             e.printStackTrace();
         }
+
+    }
+
+    private void setTotalDayRecord(AllDayAmount dayAmount){
+        activityBackTripBinding.dayExpenseLayout.totalDayRate.setText(
+               getString(R.string.total_day_rate) +" : $"+dayAmount.getTotal_day_rate());
+        activityBackTripBinding.dayExpenseLayout.totalDownTimeHours.setText(
+                getString(R.string.total_down_time) +" : "+ dayAmount.getTotal_down_time_hours());
+        activityBackTripBinding.dayExpenseLayout.totalMotelExpense.setText(
+                getString(R.string.total_motel_expense)+" : $"+dayAmount.getTotal_motel_expense());
+        activityBackTripBinding.dayExpenseLayout.totalGasExpense.setText(
+                getString(R.string.total_gas_expense)+" : $"+dayAmount.getTotal_gas_expense());
+        activityBackTripBinding.dayExpenseLayout.totalOtherExpense.setText(
+                getString(R.string.total_other_expense)+" : $"+dayAmount.getTotal_other_expense());
+        activityBackTripBinding.dayExpenseLayout.mainTotalDaysExpense.setText(
+                getString(R.string.main_total_day)+" : $"+dayAmount.getMain_total_days_expense());
+        activityBackTripBinding.dayExpenseLayout.mainTotalPrice.setText(
+                getString(R.string.main_total_price)+" : $"+dayAmount.getMain_total_price());
+        activityBackTripBinding.dayExpenseLayout.mainTotalCardExpense.setText(
+               getString(R.string.main_total_card)+" : $" +dayAmount.getMain_total_card_expense());
+        activityBackTripBinding.dayExpenseLayout.mainTotalDownTimePrice.setText(
+                getString(R.string.main_total_down)+" : $"+dayAmount.getMain_total_down_time_price());
+        activityBackTripBinding.dayExpenseLayout.mainExtraPayToDriver.setText(
+                getString(R.string.main_extra_pay)+" : $"+dayAmount.getMain_extra_pay_to_driver());
+        activityBackTripBinding.dayExpenseLayout.totalPayToDriver.setText(
+                getString(R.string.total_pay_driver)+" : $"+dayAmount.getTotal_pay_to_driver());
+
+        activityBackTripBinding.dayPrice.perMileCost.setText(getString(R.string.per_mile_cost)+" $ "+
+                dayAmount.getJob_pay_per_mile());
+        activityBackTripBinding.dayPrice.jobDayRate.setText(getString(R.string.day_rate)+ " $ "+
+                dayAmount.getJob_day_rate());
+        activityBackTripBinding.dayPrice.jobNoGoesPrice.setText(getString(R.string.no_go_price) +
+                " $ "+dayAmount.getJob_no_go_price());
 
     }
 }

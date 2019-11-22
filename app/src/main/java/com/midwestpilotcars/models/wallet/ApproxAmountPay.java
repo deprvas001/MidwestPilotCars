@@ -1,9 +1,12 @@
 package com.midwestpilotcars.models.wallet;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ApproxAmountPay {
     String status;
     String message;
     DriverAmount data;
+
 
     public String getStatus() {
         return status;

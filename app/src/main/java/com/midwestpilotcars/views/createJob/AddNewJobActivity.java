@@ -291,29 +291,6 @@ public class AddNewJobActivity extends BaseActivity implements View.OnClickListe
         if(isAllFill){
             activityAddNewJobBinding.progressBar.setVisibility(View.VISIBLE);
             activityAddNewJobBinding.imgBtnAddJob.setClickable(false);
-            /*addJobViewModel.createJob(this, addJobRequestModel).observe(this, commonResponse -> {
-                if (commonResponse.isStatus()) {
-                    AddJobResponseModel addJobResponseModel = (AddJobResponseModel) commonResponse.getData();
-                    Toast.makeText(this, addJobResponseModel.getMessage(), Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(AddNewJobActivity.this, MainActivity.class));
-                    finish();
-
-                } else {
-                    if (commonResponse.getData() == null) {
-                        Toast.makeText(this, getString(R.string.auth_failure), Toast.LENGTH_SHORT).show();
-                        goToLogin();
-                    } else {
-                        Exception ex = (Exception) commonResponse.getData();
-                        if(ex.getMessage().contains("400")){
-                            Toast.makeText(this, getString(R.string.empty_field), Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-                activityAddNewJobBinding.progressBar.setVisibility(View.GONE);
-                activityAddNewJobBinding.imgBtnAddJob.setClickable(true);
-            });*/
 
             sendRequest(addJobRequestModel);
         }else{
@@ -553,4 +530,6 @@ public class AddNewJobActivity extends BaseActivity implements View.OnClickListe
     public void onBackPressed() {
         alertDialog();
     }
+
+
 }

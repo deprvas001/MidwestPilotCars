@@ -185,8 +185,13 @@ ImageButton submit;
                                 for (int i=0;i<dayData.size();i++){
                                     String day = dayData.get(i).getNo_go_day();
                                     DayWiseTravell day_wise = new DayWiseTravell();
-                                    sum = sum + Integer.parseInt(dayData.get(i).getMiles_travelled());
-                                    day_wise.setDay_travell("Day "+String.valueOf(i+1)+" - "+dayData.get(i).getMiles_travelled() +" Miles");
+                                    if(dayData.get(i).getMiles_travelled().isEmpty()){
+                                        sum = sum + 0;
+                                        day_wise.setDay_travell("Day " + String.valueOf(i + 1) + " - " + "0" +" Miles");
+                                    }else{
+                                        sum = sum + Integer.parseInt(dayData.get(i).getMiles_travelled());
+                                        day_wise.setDay_travell("Day " + String.valueOf(i + 1) + " - " + dayData.get(i).getMiles_travelled() +" Miles");
+                                    }
                                     day_List.add(day_wise);
                                 }
                                 total_show.setText(String.valueOf(sum) +" Miles");
@@ -202,6 +207,7 @@ ImageButton submit;
                             }
                         }
                     }catch (Exception e){
+                        hideProgressDialog();
                         e.printStackTrace();
                     }
 
@@ -301,9 +307,9 @@ ImageButton submit;
 
                                 Intent intent = new Intent(EndFormViewActivity.this, BackTrip.class);
                                 intent.putExtra(AppConstants.JOB_KEY,job_id);
-                                intent.putExtra(AppConstants.JOBS_ONGOING, ongoingArrayList);
+                                /*intent.putExtra(AppConstants.JOBS_ONGOING, ongoingArrayList);
                                 intent.putExtra(AppConstants.END_STATUS, trip_status);
-                                intent.putExtra(AppConstants.APPROX_PAY_AMOUNT,amount_pay);
+                                intent.putExtra(AppConstants.APPROX_PAY_AMOUNT,amount_pay);*/
                                 startActivity(intent);
 
                                 finish();
@@ -490,6 +496,7 @@ ImageButton submit;
 
     public void showAlertDialog() {
         builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.title_client_sign));
         builder.setMessage(getString(R.string.sign_driver))
                 .setCancelable(false)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {

@@ -69,7 +69,7 @@ class MapActivity : BaseActivity(), OnMapReadyCallback,
     lateinit var mLocationRequest: LocationRequest
 
     val placesApi = PlaceAPI.Builder()
-            .apiKey("AIzaSyAj2mPqaBLScPUND6GGcVvaWGOPOAYKETg")
+            .apiKey("AIzaSyA4mjnDAmUpOBpBqL8VQvf3hFfYQPYAiBY")
             .build(this@MapActivity)
 
     var street = ""
@@ -187,7 +187,6 @@ class MapActivity : BaseActivity(), OnMapReadyCallback,
             buildGoogleApiClient()
             mMap!!.isMyLocationEnabled = true
         }
-
     }
 
     protected fun buildGoogleApiClient() {

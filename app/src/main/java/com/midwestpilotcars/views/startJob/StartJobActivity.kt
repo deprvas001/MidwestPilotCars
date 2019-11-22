@@ -36,6 +36,7 @@ import com.midwestpilotcars.views.activities.MapActivity
 import com.midwestpilotcars.views.home.MainActivity
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+import kotlinx.android.synthetic.main.activity_start_job.view.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -43,6 +44,7 @@ import java.util.*
 class StartJobActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.OnDateSetListener, OnDefaultDataItemClicked, TransferListener {
     var upload_imageurl: String? = ""
     var load_type_id: String? = ""
+    var time:String?=""
     override fun onProgressChanged(id: Int, bytesCurrent: Long, bytesTotal: Long) {
     }
 
@@ -108,6 +110,13 @@ class StartJobActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.
         var cash_advance_layout = activityStartJobBinding.cashAdvanceView
         cash_advance_layout.findViewById<TextView>(R.id.title).text = AppConstants.CASH_IN_ADVANCE
         cash_advance_layout.findViewById<TextView>(R.id.value).text = upcoming.jobCashInAdvance
+
+        var start_date_layout =  activityStartJobBinding.startDateLayout
+        start_date_layout.findViewById<TextView>(R.id.title).text = AppConstants.START_DATE
+        start_date_layout.findViewById<TextView>(R.id.value).text = upcoming.jobStartDate
+
+        time = upcoming.jobStartDate.split(" ")[0]
+        activityStartJobBinding.etSelectDate.setText(upcoming.jobStartDate)
 
         activityStartJobBinding.etLoadType.setText(upcoming.loadTypeName)
         activityStartJobBinding.etPerDayCost.setText(upcoming.jobPerDayCost)
@@ -305,6 +314,7 @@ class StartJobActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.
         startJobRequestModel.job_truck_weight = activityStartJobBinding.etTruckWeight.text.toString()
         startJobRequestModel.job_truck_length = activityStartJobBinding.etTruckLength.text.toString()
         startJobRequestModel.jobCashInAdvance = activityStartJobBinding.etCashAdvanceView.text.toString()
+        startJobRequestModel.jobStartDateTime = activityStartJobBinding.etSelectDate.text.toString()
         activityStartJobBinding.etJobComment.text.toString()
 
         startJobRequestModel.jobTruckLoadTypeId = load_type_id
@@ -337,9 +347,20 @@ class StartJobActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.
         myCalendar.set(Calendar.YEAR, year)
         myCalendar.set(Calendar.MONTH, month)
         myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-        val myFormat = "yyyy-MM-dd hh:mm:ss" //Change as you need
+
+        val myFormat = "yyyy-MM-dd" //Change as you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)
-        activityStartJobBinding.etSelectDate.setText(sdf.format(myCalendar.time))
+
+        if(sdf.format(myCalendar.time) >=time.toString() ){
+            val myFormat = "yyyy-MM-dd hh:mm:ss"
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+          //  Toast.makeText(this, "Valid", Toast.LENGTH_SHORT).show()
+            activityStartJobBinding.etSelectDate.setText(sdf.format(myCalendar.time))
+        }else{
+            DialogUtils.showAlertDialog(this, getString(R.string.select_date_lesser))
+        }
+
+
     }
 
     @SuppressLint("ResourceType")

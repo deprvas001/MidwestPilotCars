@@ -419,8 +419,8 @@ public class EndForm extends BaseActivity implements View.OnClickListener, DateP
         DatePickerDialog.OnDateSetListener dateSetListener = (DatePickerDialog.OnDateSetListener) EndForm.this;
 
         DatePickerDialog mDate = new DatePickerDialog(EndForm.this, dateSetListener, mYear, mMonth, mDay);
-       // mDate.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-         mDate.getDatePicker().setMaxDate(System.currentTimeMillis());
+        mDate.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+        // mDate.getDatePicker().setMaxDate(System.currentTimeMillis());
         mDate.show();
         String myFormat = "yyyy-MM-dd hh:mm:ss"; //Change as you need
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
@@ -477,9 +477,17 @@ public class EndForm extends BaseActivity implements View.OnClickListener, DateP
                                 List<DayData> dayData = perDay.getDay_Data();
                                 for (int i = 0; i < dayData.size(); i++) {
                                     String day = dayData.get(i).getNo_go_day();
-                                    sum = sum + Integer.parseInt(dayData.get(i).getMiles_travelled());
+
                                     DayWiseTravell day_wise = new DayWiseTravell();
-                                    day_wise.setDay_travell("Day " + String.valueOf(i + 1) + " - " + dayData.get(i).getMiles_travelled() +" Miles");
+
+                                    if(dayData.get(i).getMiles_travelled().isEmpty()){
+                                        sum = sum + 0;
+                                        day_wise.setDay_travell("Day " + String.valueOf(i + 1) + " - " + "0" +" Miles");
+                                    }else{
+                                        sum = sum + Integer.parseInt(dayData.get(i).getMiles_travelled());
+                                        day_wise.setDay_travell("Day " + String.valueOf(i + 1) + " - " + dayData.get(i).getMiles_travelled() +" Miles");
+                                    }
+
                                     day_List.add(day_wise);
                                 }
                                 total_miles.setText("Total Miles :- " + String.valueOf(sum));
@@ -494,6 +502,7 @@ public class EndForm extends BaseActivity implements View.OnClickListener, DateP
                             }
                         }
                     } catch (Exception e) {
+                        hideProgressDialog();
                         e.printStackTrace();
                     }
 
@@ -670,7 +679,25 @@ public class EndForm extends BaseActivity implements View.OnClickListener, DateP
             }, new com.android.volley.Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(EndForm.this, "job_end_date_time end should be greater then job start date", Toast.LENGTH_SHORT).show();
+                  /*  Toast.makeText(EndForm.this, "job_end_date_time end should be greater then job start date", Toast.LENGTH_SHORT).show();
+                    Log.e("LOG_RESPONSE", error.toString());*/
+
+                    NetworkResponse networkResponse = error.networkResponse;
+                    if (networkResponse != null && networkResponse.data != null) {
+                        String jsonError = new String(networkResponse.data);
+
+                        try {
+                            JSONObject json = new JSONObject(jsonError);
+                            String message = json.getString("message");
+                            Toast.makeText(EndForm.this, message, Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        // Print Error!
+                    }
+
+                    hideProgressDialog();
                     Log.e("LOG_RESPONSE", error.toString());
                 }
             }) {

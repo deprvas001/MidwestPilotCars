@@ -23,6 +23,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/edit_text_background"
         android:drawablePadding="5dp"
+        android:drawableLeft="@mipmap/dollar"
         android:singleLine="true"
         android:inputType="number"
         android:textColorHint="@color/hint_color"
@@ -152,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-
+            android:drawableLeft="@mipmap/dollar"
             android:background="@drawable/edit_text_background"
             android:drawablePadding="5dp"
             android:singleLine="true"
