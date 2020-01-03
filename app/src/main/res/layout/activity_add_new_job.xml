@@ -46,7 +46,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="38dp"
-                    android:hint="@string/start_date"
                     android:layout_marginBottom="5dp"
                     >
 
@@ -55,30 +54,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-
                     android:background="@drawable/edit_text_background"
                     android:drawableEnd="@drawable/ic_calendar"
                     android:drawableRight="@drawable/ic_calendar"
                     android:drawablePadding="5dp"
                     android:editable="false"
+                    android:textColor="@color/hint_color"
                     android:focusable="false"
+                    android:hint="@string/start_date"
                     android:clickable="true"
-
                     android:text="@={addJobRequestModel.jobStartDate}"
-                    android:textColorHint="@color/hint_color"
                     android:textSize="16sp" />
 
-                  <TextView
-                      android:id="@+id/select_date_view"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:padding="10dp"
-                      android:layout_marginLeft="10dp"
-                      android:visibility="gone"
-                      android:textSize="10sp"
-                      android:textColor="@color/red_color"
-                      android:text="@string/error_field_empty"/>
                 </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/select_date_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:visibility="gone"
+                    android:textSize="10sp"
+                    android:textColor="@color/red_color"
+                    android:text="@string/error_field_empty"/>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_marginBottom="5dp"

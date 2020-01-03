@@ -93,7 +93,7 @@ public class AddNewJobActivity extends BaseActivity implements View.OnClickListe
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-               alertDialog();
+                alertDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

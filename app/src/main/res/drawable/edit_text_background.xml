@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
     <item android:top="@dimen/appbar_padding_top">
+
         <shape
             android:shape="rectangle">
             <stroke android:width="2dp" android:color="#32a8b6c8" />
