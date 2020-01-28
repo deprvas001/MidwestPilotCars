@@ -108,12 +108,15 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
     int id = 0;
     AllDayExpenseAdapter expenseAdapter;
     RecyclerView recyclerView;
+    DriverAmount driverAmount;
+    AllDayAmount allDayAmount;
     int check_id = 0;
     File fileToS3;
     String gas_expense_image = "", motel_expense_image = "", other_expense_image = "";
     AlertDialog.Builder builder;
     private static TransferUtility transferUtility;
     AmazonS3 s3Client;
+    String total_pay_driver="",main_wallet_amount="";
     ImageButton submit;
     int gas_cash = 1, motel_cash = 1, other_cash = 1, cash_advance = 1, more_gas_cash = 1,
             more_motel_cash = 1, more_other_cash = 1;
@@ -220,6 +223,7 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
         motel_comment.setOnClickListener(this);
         camera_motel.setOnClickListener(this);
 
+
         view = (View) findViewById(R.id.other_expense_layout);
         et_other_expense = (EditText) view.findViewById(R.id.et_other_expenses);
         camera_other = (ImageView) view.findViewById(R.id.img_camera_other);
@@ -247,6 +251,7 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
         et_pending_amount = (TextView) view.findViewById(R.id.pending_amount);
         cash_amount_et = (EditText) view.findViewById(R.id.cash_amount_edittext);
         advance_cash = (RadioGroup) view.findViewById(R.id.option_group_cash);
+        activityBackTripBinding.advanceLayout.verifyButton.setOnClickListener(this);
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
 
@@ -302,7 +307,6 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
             case R.id.tv_motel_comment_more:
                 if (add_more_motel_descp.getVisibility() == View.VISIBLE) {
                     add_more_motel_comment.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_plus_symbol, 0, 0);
-
                 } else {
                     add_more_motel_comment.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_cross_symbol, 0, 0);
 
@@ -332,11 +336,9 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
                     empty_motel_expense.setTextColor(getResources().getColor(R.color.red_color));
                     empty_motel_expense.setVisibility(View.VISIBLE);
                 }
-
                 break;
 
             case R.id.tv_gas_comment_more:
-
                 if (add_more_expense_comment.getVisibility() == View.VISIBLE) {
                     add_more_expense_comment.setVisibility(View.GONE);
                     add_more_gas_comment.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_plus_symbol, 0, 0);
@@ -444,6 +446,10 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
                 openImagePicker();
                 break;
 
+            case R.id.verify_button:
+                validateAmount(driverAmount,allDayAmount);
+                break;
+
             case R.id.img_btn_add_job:
                 String gas_expense = et_gas_expense.getText().toString();
                 String gas_comment_fed = gas_descrp_comment.getText().toString();
@@ -530,9 +536,12 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
                             jason_other.put(object_other1);
                         }
 
-                        if (Utils.Companion.isNetworkAvailable(this))
-                            sendRequest(ja, jason_motel, jason_other);
-                        else
+                        if (Utils.Companion.isNetworkAvailable(this)){
+                            if(validateAmount(driverAmount,allDayAmount)){
+                                //  sendRequest(ja, jason_motel, jason_other);
+                                Toast.makeText(this, "Request Success", Toast.LENGTH_SHORT).show();
+                            }
+                        } else
                             DialogUtils.showNoInternetDialog(this, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -594,12 +603,15 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
 
             case R.id.option_give_radio:
                 cash_advance = 1;
+                activityBackTripBinding.advanceLayout.verifyButton.setVisibility(View.VISIBLE);
                 cash_amount_et.setVisibility(View.VISIBLE);
                 break;
 
             case R.id.option_take_radio:
                 cash_advance = 2;
+                activityBackTripBinding.advanceLayout.verifyButton.setVisibility(View.GONE);
                 cash_amount_et.setVisibility(View.GONE);
+                resetView();
                 cash_amount_et.setText(null);
                 break;
 
@@ -824,7 +836,12 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
             params.put("other_expense", String.valueOf(jason_other));
             params.put("job_id", job_id);
             params.put("cash_advance_decision", String.valueOf(cash_advance));
-            params.put("give_back_cash", cash_amount_et.getText().toString());
+            if(cash_amount_et.getText().toString().isEmpty()){
+                params.put("give_back_cash", "0");
+            }else{
+                params.put("give_back_cash", cash_amount_et.getText().toString());
+            }
+
 
 
             final String mRequestBody = params.toString();
@@ -967,7 +984,6 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
                         dialog.cancel();
                         startActivity(new Intent(BackTrip.this, MainActivity.class));
                         finish();
-
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -1018,9 +1034,24 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
                                 AllDayAmount dayAmount = data.getAllDayAmount();
                                 List<DayExpense> day_expense_list =dayAmount.getDayExpenses();
 
+                                driverAmount = data;
+                                allDayAmount = dayAmount;
 
-                                et_wallet_amount.setText(getResources().getString(R.string.wallet_amount)+" : $"+wallet_amount);
-                                et_pending_amount.setText(getResources().getString(R.string.pending_amount)+" : $"+pending_amount);
+                                activityBackTripBinding.dayExpenseLayout.approvedWalletAmount.setText(getString(R.string.approved_wallet_amount)+" - $"+
+                                        data.getWalletData().getWallet_amount());
+
+                                activityBackTripBinding.dayExpenseLayout.mainWalletAmount.setText(
+                                        getString(R.string.main_wallet_amount_xtx)+" - $0");
+
+                                et_wallet_amount.setText(getResources().getString(R.string.main_wallet_amount)+" : $"+wallet_amount);
+                                activityBackTripBinding.dayExpenseLayout.giveBackCash.setText(getString(R.string.give_back_cash)+ " - $0");
+
+                                if(pending_amount !=null){
+                                    et_pending_amount.setText(getResources().getString(R.string.pending_amount)+" : $"+pending_amount);
+                                }else{
+                                    et_pending_amount.setText(getResources().getString(R.string.pending_amount)+" : $0");
+                                }
+
                                 et_approx_amount.setText(getResources().getString(R.string.approx_amount)+" : $"+approx_amount);
 
                                 expenseAdapter = new AllDayExpenseAdapter(day_expense_list);
@@ -1029,7 +1060,7 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
                                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                                 recyclerView.setAdapter(expenseAdapter);
 
-                                setTotalDayRecord(dayAmount);
+                                setTotalDayRecord(dayAmount,data);
                             }
                             hideProgressDialog();
                         }else{
@@ -1054,39 +1085,148 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
             hideProgressDialog();
             e.printStackTrace();
         }
+    }
+
+    private void setTotalDayRecord(AllDayAmount dayAmount,DriverAmount data){
+        activityBackTripBinding.dayExpenseLayout.totalPayPerMile.setText(
+                getString(R.string.total_pay_per_mile) +" : $"+dayAmount.getTotal_pay_per_mile());
+
+        if(dayAmount.getTotal_day_rate()!=null){
+            activityBackTripBinding.dayExpenseLayout.totalDayRate.setText(
+                    getString(R.string.total_day_rate_pay) +" : $"+dayAmount.getTotal_day_rate());
+        }else{
+            activityBackTripBinding.dayExpenseLayout.totalDayRate.setText(
+                    getString(R.string.total_day_rate_pay) +" : $0");
+        }
+
+
+        activityBackTripBinding.dayExpenseLayout.totalMiniPay.setText(
+                getString(R.string.total_mini_pay) +" : $"+dayAmount.getTotal_mini_pay());
+
+        activityBackTripBinding.dayExpenseLayout.mainTotalDownTimePriceTxt.setText(
+                getString(R.string.total_down_time_pay) +" : $"+dayAmount.getMain_total_down_time_price());
+
+        activityBackTripBinding.dayExpenseLayout.totalMotelExpenseCard.setText(
+                getString(R.string.total_motel_expense_card) +" : $"+dayAmount.getTotal_motel_expense_card());
+
+        activityBackTripBinding.dayExpenseLayout.totalMotelExpenseCash.setText(
+                getString(R.string.total_motel_expense_cash) +" : $"+dayAmount.getTotal_motel_expense_cash());
+
+        activityBackTripBinding.dayExpenseLayout.totalGasExpenseCard.setText(
+                getString(R.string.total_gas_expense_card) +" : $"+dayAmount.getTotal_gas_expense_card());
+
+        activityBackTripBinding.dayExpenseLayout.totalGasExpenseCash.setText(
+                getString(R.string.total_gas_expense_cash) +" : $"+dayAmount.getTotal_gas_expense_cash());
+
+        activityBackTripBinding.dayExpenseLayout.totalOtherExpenseCard.setText(
+                getString(R.string.total_other_expense_card) +" : $"+dayAmount.getTotal_other_expense_card());
+
+        activityBackTripBinding.dayExpenseLayout.totalOtherExpenseCash.setText(
+                getString(R.string.total_other_expense_cash) +" : $"+dayAmount.getTotal_other_expense_cash());
+
+
+        if(dayAmount.getMain_extra_pay_to_driver()!=null){
+            activityBackTripBinding.dayExpenseLayout.mainExtraPayToDriverTxt.setText(
+                    getString(R.string.main_extra_pay_to_driver) +" : $"+dayAmount.getMain_extra_pay_to_driver());
+        }else{
+            activityBackTripBinding.dayExpenseLayout.mainExtraPayToDriverTxt.setText(
+                    getString(R.string.main_extra_pay_to_driver) +" : $0");
+        }
+
+
+        activityBackTripBinding.dayExpenseLayout.totalPayToDriverTxt.setText(
+                getString(R.string.total_pay_to_driver) +" : $"+dayAmount.getTotal_pay_to_driver());
+
+        activityBackTripBinding.dayExpenseLayout.totalPayDriver.setText(
+                getString(R.string.total_amount_pay_to_driver) +" : $0");
+
+        if(dayAmount.getMain_extra_pay_to_driver()!=null){
+            total_pay_driver=dayAmount.getMain_extra_pay_to_driver();
+        }else{
+            total_pay_driver="0";
+        }
+
+        activityBackTripBinding.dayPrice.perMileCost.setText(getString(R.string.per_mile)+" - $"+
+                dayAmount.getJob_pay_per_mile());
+        activityBackTripBinding.dayPrice.jobDayRate.setText(getString(R.string.day_rate)+ " - $"+
+                dayAmount.getJob_day_rate());
+        activityBackTripBinding.dayPrice.jobNoGoesPrice.setText(getString(R.string.no_go_price) +
+                " - $ "+dayAmount.getJob_no_go_price());
 
     }
 
-    private void setTotalDayRecord(AllDayAmount dayAmount){
-        activityBackTripBinding.dayExpenseLayout.totalDayRate.setText(
-               getString(R.string.total_day_rate) +" : $"+dayAmount.getTotal_day_rate());
-        activityBackTripBinding.dayExpenseLayout.totalDownTimeHours.setText(
-                getString(R.string.total_down_time) +" : "+ dayAmount.getTotal_down_time_hours());
-        activityBackTripBinding.dayExpenseLayout.totalMotelExpense.setText(
-                getString(R.string.total_motel_expense)+" : $"+dayAmount.getTotal_motel_expense());
-        activityBackTripBinding.dayExpenseLayout.totalGasExpense.setText(
-                getString(R.string.total_gas_expense)+" : $"+dayAmount.getTotal_gas_expense());
-        activityBackTripBinding.dayExpenseLayout.totalOtherExpense.setText(
-                getString(R.string.total_other_expense)+" : $"+dayAmount.getTotal_other_expense());
-        activityBackTripBinding.dayExpenseLayout.mainTotalDaysExpense.setText(
-                getString(R.string.main_total_day)+" : $"+dayAmount.getMain_total_days_expense());
-        activityBackTripBinding.dayExpenseLayout.mainTotalPrice.setText(
-                getString(R.string.main_total_price)+" : $"+dayAmount.getMain_total_price());
-        activityBackTripBinding.dayExpenseLayout.mainTotalCardExpense.setText(
-               getString(R.string.main_total_card)+" : $" +dayAmount.getMain_total_card_expense());
-        activityBackTripBinding.dayExpenseLayout.mainTotalDownTimePrice.setText(
-                getString(R.string.main_total_down)+" : $"+dayAmount.getMain_total_down_time_price());
-        activityBackTripBinding.dayExpenseLayout.mainExtraPayToDriver.setText(
-                getString(R.string.main_extra_pay)+" : $"+dayAmount.getMain_extra_pay_to_driver());
-        activityBackTripBinding.dayExpenseLayout.totalPayToDriver.setText(
-                getString(R.string.total_pay_driver)+" : $"+dayAmount.getTotal_pay_to_driver());
+    private boolean validateAmount(DriverAmount data,AllDayAmount allDayAmount){
+      float int_advance_owned;
+      float int_advance_deducted;
+      float int_pay_to_driver;
+      float main_wallet_amount;
 
-        activityBackTripBinding.dayPrice.perMileCost.setText(getString(R.string.per_mile_cost)+" $ "+
-                dayAmount.getJob_pay_per_mile());
-        activityBackTripBinding.dayPrice.jobDayRate.setText(getString(R.string.day_rate)+ " $ "+
-                dayAmount.getJob_day_rate());
-        activityBackTripBinding.dayPrice.jobNoGoesPrice.setText(getString(R.string.no_go_price) +
-                " $ "+dayAmount.getJob_no_go_price());
+         if(!data.getWalletData().getWallet_amount().isEmpty() &&
+                 data.getWalletData().getWallet_amount()!=null){
+             activityBackTripBinding.dayExpenseLayout.approvedWalletAmount.setText(getString(R.string.approved_wallet_amount)+" - $"+
+                     data.getWalletData().getWallet_amount());
+             main_wallet_amount = Integer.parseInt(data.getWalletData().getWallet_amount());
+         }else{
+             activityBackTripBinding.dayExpenseLayout.approvedWalletAmount.setText(getString(R.string.approved_wallet_amount)+" - $0");
+             main_wallet_amount = 0;
+         }
 
+        String amount = activityBackTripBinding.advanceLayout.cashAmountEdittext.getText().toString();
+
+        activityBackTripBinding.dayExpenseLayout.giveBackCash.setText(getString(R.string.give_back_cash)+ " - $"+amount);
+
+        String advance_owned = data.getWalletData().getWallet_amount();
+        if(!advance_owned.isEmpty() && advance_owned !=null){
+            int_advance_owned = Float.parseFloat(advance_owned);
+        }else{
+            int_advance_owned = 0;
+        }
+
+        if(!amount.isEmpty() && amount !=null){
+            int_advance_deducted = Float.parseFloat(amount);
+        }else{
+            int_advance_deducted = 0;
+        }
+
+        float left_to_pay = int_advance_owned - int_advance_deducted;
+
+        if(!allDayAmount.getTotal_pay_to_driver().isEmpty() && allDayAmount.getTotal_pay_to_driver() !=null){
+            int_pay_to_driver =  Float.parseFloat(allDayAmount.getTotal_pay_to_driver());
+        }else{
+            int_pay_to_driver = 0;
+        }
+
+       float amountPayDriver = int_pay_to_driver - int_advance_deducted;
+
+
+        if(int_advance_deducted<=main_wallet_amount && int_advance_deducted<=int_pay_to_driver){
+
+            activityBackTripBinding.dayExpenseLayout.mainWalletAmount.setText(
+                    getString(R.string.main_wallet_amount_xtx)+" - $"+String.valueOf(left_to_pay));
+
+            activityBackTripBinding.dayExpenseLayout.totalPayDriver.setText(
+                    getString(R.string.total_amount_pay_to_driver) +" : $"+amountPayDriver);
+            return  true;
+        }else{
+
+            Toast.makeText(this, getString(R.string.validate_message), Toast.LENGTH_LONG).show();
+
+            activityBackTripBinding.dayExpenseLayout.mainWalletAmount.setText(
+                    getString(R.string.main_wallet_amount_xtx)+" - $0");
+
+            activityBackTripBinding.dayExpenseLayout.totalPayDriver.setText(
+                    getString(R.string.total_amount_pay_to_driver) +" : $0");
+            return false;
+        }
+
+
+    }
+
+    private void resetView(){
+        activityBackTripBinding.dayExpenseLayout.mainWalletAmount.setText(
+                getString(R.string.main_wallet_amount_xtx)+" - $0");
+        activityBackTripBinding.dayExpenseLayout.giveBackCash.setText(getString(R.string.give_back_cash)+ " - $0");
+        activityBackTripBinding.dayExpenseLayout.totalPayDriver.setText(
+                getString(R.string.total_amount_pay_to_driver) +" : $0");
     }
 }

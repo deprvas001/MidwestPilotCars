@@ -49,9 +49,6 @@
                 android:layout_height="wrap_content" />
 
 
-
-
-
             <include
                 android:layout_marginTop="20dp"
                 android:id="@+id/advance_layout"

@@ -183,4 +183,25 @@
     <string name="total_pay_driver"><b>Total Pay To Driver</b></string>
     <string name="day_rate">Job Day Rate</string>
     <string name="no_go_price">No Go Price</string>
+    <string name="per_mile">Per Mile</string>
+    <string name="total_pay_per_mile">Total-Pay Per Mile</string>
+    <string name="total_day_rate_pay">Total-Day Rate Pay</string>
+    <string name="total_mini_pay">Total-Mini Pay</string>
+    <string name="total_down_time_pay">Total Down Time Pay</string>
+    <string name="total_motel_expense_card">Total Motel Expense (CC)</string>
+    <string name="total_motel_expense_cash">Total Motel Expense (Cash)</string>
+    <string name="total_gas_expense_card">Total Gas Expense (CC)</string>
+    <string name="total_gas_expense_cash">Total Gas Expense (Cash)</string>
+    <string name="total_other_expense_card">Total Other Expenses (CC)</string>
+    <string name="total_other_expense_cash">Total Other Expenses (Cash)</string>
+    <string name="main_extra_pay_to_driver">Additional Pay</string>
+    <string name="total_pay_to_driver">Total Driver Pay</string>
+    <string name="main_wallet_amount">Cash Advance Left to Pay</string>
+    <string name="approved_wallet_amount">Total Cash in Advance Owed</string>
+    <string name="give_back_cash">Cash Advance Deducted</string>
+    <string name="main_wallet_amount_xtx">Cash Advance Left to Pay</string>
+    <string name="approx_pay">Approximate Pay To Driver</string>
+    <string name="total_amount_pay_to_driver">Total Amount Pay to Driver</string>
+    <string name="validate_message">Give Back should be less than or equal to Main Wallet Amount and Total Driver Pay.</string>
+    <string name="verify"><u>Confirm</u></string>
 </resources>

@@ -51,14 +51,14 @@ public class AllDayExpenseAdapter extends RecyclerView.Adapter<AllDayExpenseAdap
             if(day.getChoose_costing_from().equals("1")){
                 holder.day_wise_rate.setVisibility(View.GONE);
                 holder.mile_travel_calulate.setVisibility(View.VISIBLE);
-                holder.costing_from.setText("Choose Costing From : Per Mile Cost" );
+                holder.costing_from.setText("Form of Payment  : Per Mile " );
                 holder.mile_travel_calulate.setText(
                         "No. Of Mile Travelled = "+ day.getNo_of_miles_travelled()+ "\n"+
                         "Day Wise Day Rate : "+
-                        "No. Of Mile Travelled"+ " * Per Mile Cost"
+                        "No. Of Mile Travelled"+ " * Per Mile "
                         +" = $ "+day.getDay_wise_day_rate() );
             }else if(day.getChoose_costing_from().equals("2")){
-                holder.costing_from.setText("Choose Costing From : Per Day Cost" );
+                holder.costing_from.setText("Choose Costing From : Per Day " );
                 holder.day_wise_rate.setVisibility(View.VISIBLE);
                 holder.day_wise_rate.setText("Day Wise Day Rate : $"+day.getDay_wise_day_rate());
             }else{

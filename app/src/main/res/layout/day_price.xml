@@ -26,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
             android:layout_below="@id/down_time_price" />
 
         <TextView
@@ -33,6 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
             android:layout_below="@id/per_mile_cost" />
 
         <TextView
@@ -40,7 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
+            android:textStyle="bold"
             android:paddingBottom="10dp"
+            android:textColor="@android:color/white"
             android:layout_below="@id/job_day_rate"/>
 
         <TextView

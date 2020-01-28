@@ -12,86 +12,224 @@
         android:paddingRight="@dimen/activity_horizontal_margin">
 
         <TextView
+            android:id="@+id/approx_pay_driver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="@string/approx_pay"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/total_pay_per_mile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_below="@id/approx_pay_driver"
+            android:paddingTop="10dp" />
+
+        <TextView
             android:id="@+id/total_day_rate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
+            android:layout_below="@id/total_pay_per_mile"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/total_mini_pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_below="@id/total_day_rate"
             android:paddingTop="10dp" />
 
 
-
         <TextView
-            android:id="@+id/total_motel_expense"
+            android:id="@+id/main_total_down_time_price_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:layout_below="@id/total_day_rate" />
+            android:textSize="14dp"
+            android:layout_below="@id/total_mini_pay"
+            android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/total_gas_expense"
+            android:id="@+id/total_motel_expense_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:layout_below="@id/total_motel_expense" />
+            android:textSize="14dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_below="@id/main_total_down_time_price_txt"
+            android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/total_other_expense"
+            android:id="@+id/total_motel_expense_cash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:layout_below="@id/total_gas_expense"/>
+            android:textSize="14dp"
+            android:layout_below="@id/total_motel_expense_card"
+            android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/main_total_days_expense"
+            android:id="@+id/total_gas_expense_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:layout_below="@id/total_other_expense"/>
+            android:textSize="14dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_below="@id/total_motel_expense_cash"
+            android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/main_total_price"
+            android:id="@+id/total_gas_expense_cash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:layout_below="@id/main_total_days_expense"/>
+            android:textSize="14dp"
+            android:layout_below="@id/total_gas_expense_card"
+            android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/main_total_card_expense"
+            android:id="@+id/total_other_expense_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:layout_below="@id/main_total_price"/>
+            android:textSize="14dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_below="@id/total_gas_expense_cash"
+            android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/main_total_down_time_price"
+            android:id="@+id/total_other_expense_cash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:layout_below="@id/main_total_card_expense"/>
+            android:textSize="14dp"
+            android:layout_below="@id/total_other_expense_card"
+            android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/total_down_time_hours"
+            android:id="@+id/main_extra_pay_to_driver_txt"
             android:layout_width="match_parent"
-            android:paddingTop="10dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/main_total_down_time_price" />
+            android:textSize="14dp"
+            android:layout_below="@id/total_other_expense_cash"
+            android:paddingTop="10dp" />
 
         <TextView
-            android:id="@+id/main_extra_pay_to_driver"
+            android:id="@+id/total_pay_to_driver_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:layout_below="@id/total_down_time_hours"/>
+            android:textSize="14dp"
+            android:layout_below="@id/main_extra_pay_to_driver_txt"
+            android:paddingTop="10dp" />
+
 
         <TextView
-            android:id="@+id/total_pay_to_driver"
+            android:id="@+id/approved_wallet_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_below="@id/main_extra_pay_to_driver"/>
+            android:textSize="14dp"
+            android:text="@string/approved_wallet_amount"
+            android:layout_below="@id/total_pay_to_driver_txt"
+            android:paddingTop="10dp" />
 
+        <TextView
+            android:id="@+id/give_back_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:text="@string/give_back_cash"
+            android:layout_below="@id/approved_wallet_amount"
+            android:paddingTop="10dp" />
 
+        <TextView
+            android:id="@+id/main_wallet_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:text="@string/main_wallet_amount_xtx"
+            android:layout_below="@id/give_back_cash"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/total_pay_driver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/main_wallet_amount"
+            android:paddingTop="10dp" />
+
+        <!--  <TextView
+              android:id="@+id/total_motel_expense"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:layout_below="@id/total_pay_to_driver_txt" />
+
+          <TextView
+              android:id="@+id/total_gas_expense"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:layout_below="@id/total_motel_expense" />
+
+          <TextView
+              android:id="@+id/total_other_expense"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:layout_below="@id/total_gas_expense"/>
+
+          <TextView
+              android:id="@+id/main_total_days_expense"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:layout_below="@id/total_other_expense"/>
+
+          <TextView
+              android:id="@+id/main_total_price"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:layout_below="@id/main_total_days_expense"/>
+
+          <TextView
+              android:id="@+id/main_total_card_expense"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:layout_below="@id/main_total_price"/>
+
+          <TextView
+              android:id="@+id/main_total_down_time_price"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:layout_below="@id/main_total_card_expense"/>
+
+          <TextView
+              android:id="@+id/total_down_time_hours"
+              android:layout_width="match_parent"
+              android:paddingTop="10dp"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/main_total_down_time_price" />
+
+          <TextView
+              android:id="@+id/main_extra_pay_to_driver"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:layout_below="@id/total_down_time_hours"/>
+
+          <TextView
+              android:id="@+id/total_pay_to_driver"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="10dp"
+              android:paddingBottom="10dp"
+              android:layout_below="@id/main_extra_pay_to_driver"/>
+
+  -->
 
     </RelativeLayout>
 

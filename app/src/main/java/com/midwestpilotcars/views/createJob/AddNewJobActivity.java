@@ -103,6 +103,7 @@ public class AddNewJobActivity extends BaseActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+
             case R.id.img_btn_add_job:
                 createJob();
                 break;
@@ -110,15 +111,19 @@ public class AddNewJobActivity extends BaseActivity implements View.OnClickListe
             case R.id.et_select_date:
                 selectDate();
                 break;
+
             case R.id.et_load_type:
                 selectLoadType();
                 break;
+
             case R.id.et_trucking_company:
                 selectTruckCompany();
                 break;
+
             case R.id.et_start_location:
                 getLocation(AppConstants.START_LOCATION_REQUEST_CODE);
                 break;
+
             case R.id.et_end_location:
                 getLocation(AppConstants.END_LOCATION_REQUEST_CODE);
                 break;
@@ -530,6 +535,4 @@ public class AddNewJobActivity extends BaseActivity implements View.OnClickListe
     public void onBackPressed() {
         alertDialog();
     }
-
-
 }

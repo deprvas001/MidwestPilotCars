@@ -24,6 +24,89 @@ public class AllDayAmount {
     private String total_motel_expense;
     private String total_gas_expense;
     private String total_other_expense;
+    private String total_pay_per_mile;
+    private String total_mini_pay;
+    private String total_motel_expense_card;
+    private String total_motel_expense_cash;
+    private String total_gas_expense_card;
+    private String total_gas_expense_cash;
+    private String total_other_expense_card;
+    private String total_other_expense_cash;
+    private String main_wallet_amount;
+    private String give_back_cash;
+
+
+    public String getTotal_motel_expense_card() {
+        return total_motel_expense_card;
+    }
+
+    public void setTotal_motel_expense_card(String total_motel_expense_card) {
+        this.total_motel_expense_card = total_motel_expense_card;
+    }
+
+    public String getTotal_motel_expense_cash() {
+        return total_motel_expense_cash;
+    }
+
+    public void setTotal_motel_expense_cash(String total_motel_expense_cash) {
+        this.total_motel_expense_cash = total_motel_expense_cash;
+    }
+
+    public String getTotal_gas_expense_card() {
+        return total_gas_expense_card;
+    }
+
+    public void setTotal_gas_expense_card(String total_gas_expense_card) {
+        this.total_gas_expense_card = total_gas_expense_card;
+    }
+
+    public String getTotal_gas_expense_cash() {
+        return total_gas_expense_cash;
+    }
+
+    public void setTotal_gas_expense_cash(String total_gas_expense_cash) {
+        this.total_gas_expense_cash = total_gas_expense_cash;
+    }
+
+    public String getTotal_other_expense_card() {
+        return total_other_expense_card;
+    }
+
+    public void setTotal_other_expense_card(String total_other_expense_card) {
+        this.total_other_expense_card = total_other_expense_card;
+    }
+
+    public String getTotal_other_expense_cash() {
+        return total_other_expense_cash;
+    }
+
+    public void setTotal_other_expense_cash(String total_other_expense_cash) {
+        this.total_other_expense_cash = total_other_expense_cash;
+    }
+
+    public String getMain_wallet_amount() {
+        return main_wallet_amount;
+    }
+
+    public void setMain_wallet_amount(String main_wallet_amount) {
+        this.main_wallet_amount = main_wallet_amount;
+    }
+
+    public String getGive_back_cash() {
+        return give_back_cash;
+    }
+
+    public void setGive_back_cash(String give_back_cash) {
+        this.give_back_cash = give_back_cash;
+    }
+
+    public String getTotal_mini_pay() {
+        return total_mini_pay;
+    }
+
+    public void setTotal_mini_pay(String total_mini_pay) {
+        this.total_mini_pay = total_mini_pay;
+    }
 
     public String getTotal_day_rate() {
         return total_day_rate;
@@ -177,6 +260,14 @@ public class AllDayAmount {
 
     public void setJob_extra_pay_to_driver(String job_extra_pay_to_driver) {
         this.job_extra_pay_to_driver = job_extra_pay_to_driver;
+    }
+
+    public String getTotal_pay_per_mile() {
+        return total_pay_per_mile;
+    }
+
+    public void setTotal_pay_per_mile(String total_pay_per_mile) {
+        this.total_pay_per_mile = total_pay_per_mile;
     }
 
     public List<DayExpense> getDayExpenses() {
