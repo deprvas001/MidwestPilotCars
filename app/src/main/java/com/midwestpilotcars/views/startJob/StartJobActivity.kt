@@ -28,6 +28,7 @@ import com.midwestpilotcars.databinding.ActivityStartJobBinding
 import com.midwestpilotcars.helpers.AwsUtils
 import com.midwestpilotcars.helpers.DialogUtils
 import com.midwestpilotcars.helpers.Utils
+import com.midwestpilotcars.models.CommonResponse
 import com.midwestpilotcars.models.allDefaultModels.LOADTYPE
 import com.midwestpilotcars.models.getAllJobs.UPCOMING
 import com.midwestpilotcars.models.startJob.StartJobRequestModel
@@ -319,27 +320,30 @@ class StartJobActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.
 
         startJobRequestModel.jobTruckLoadTypeId = load_type_id
 
-        startJobViewModel.startJob(this, startJobRequestModel).observe(this, android.arch.lifecycle.Observer { commonResponse ->
-            if (commonResponse!!.isStatus) {
-                val startJobResponseModel = commonResponse.data as StartJobResponseModel
-                hideProgressDialog()
-                Toast.makeText(this, startJobResponseModel.message, Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            } else {
-                hideProgressDialog()
-                if (commonResponse.data == null) {
-                    Toast.makeText(this, getString(R.string.auth_failure), Toast.LENGTH_SHORT).show()
-                } else {
-                    val ex = commonResponse.data as Exception
-                    if (ex.message!!.contains("400")) {
-                        Toast.makeText(this, getString(R.string.job_alredy_in_progress), Toast.LENGTH_SHORT).show()
+        startJobViewModel.startJob(this, startJobRequestModel).observe(
+                this,
+                android.arch.lifecycle.Observer { commonResponse: CommonResponse? ->
+                    if (commonResponse!!.isStatus) {
+                        val startJobResponseModel = commonResponse.data as StartJobResponseModel
+                        hideProgressDialog()
+                        Toast.makeText(this, startJobResponseModel.message, Toast.LENGTH_LONG).show()
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
                     } else {
-                        Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+                        hideProgressDialog()
+                        if (commonResponse.data == null) {
+                            Toast.makeText(this, getString(R.string.auth_failure), Toast.LENGTH_SHORT).show()
+                        } else {
+                            val ex = commonResponse.data as Exception
+                            if (ex.message!!.contains("400")) {
+                                Toast.makeText(this, getString(R.string.job_alredy_in_progress), Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(this, ex.message, Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
                 }
-            }
-        })
+        )
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {

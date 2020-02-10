@@ -72,26 +72,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         showProgressDialog(getResources().getString(R.string.loading));
         String userType = SharedPreferenceHelper.Companion.getInstance().getUserData(this).getData().getUserType();
         String userId = SharedPreferenceHelper.Companion.getInstance().getUserData(this).getData().getUserId();
-        homeViewModel.getAllJobs(this, userType, userId, AppConstants.JOBS_ALL, 0, 10).observe(this, commonResponse -> {
-            if (commonResponse.isStatus()) {
-                hideProgressDialog();
-                getAllJobsModel = (GetAllJobsModel) commonResponse.getData();
-                String tag = "android:switcher:" + R.id.container + ":" + 0;
-                PlaceHolderFragment placeHolderFragment = (PlaceHolderFragment) getSupportFragmentManager().findFragmentByTag(tag);
-                placeHolderFragment.setNewJobData(getAllJobsModel.getData().getUPCOMING());
-            } else {
-                if (commonResponse.getData() == null) {
+
+        try {
+            homeViewModel.getAllJobs(this, userType, userId, AppConstants.JOBS_ALL, 0, 10).observe(this, commonResponse -> {
+                if (commonResponse.isStatus()) {
                     hideProgressDialog();
-                    Toast.makeText(this, getString(R.string.auth_failure), Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    finish();
+                    getAllJobsModel = (GetAllJobsModel) commonResponse.getData();
+                    String tag = "android:switcher:" + R.id.container + ":" + 0;
+                    PlaceHolderFragment placeHolderFragment = (PlaceHolderFragment) getSupportFragmentManager().findFragmentByTag(tag);
+                    placeHolderFragment.setNewJobData(getAllJobsModel.getData().getUPCOMING());
                 } else {
-                    hideProgressDialog();
-                    Exception ex = (Exception) commonResponse.getData();
-                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                    if (commonResponse.getData() == null) {
+                        hideProgressDialog();
+                        Toast.makeText(this, getString(R.string.auth_failure), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
+                    } else {
+                        hideProgressDialog();
+                        Exception ex = (Exception) commonResponse.getData();
+                        Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(this, "Please Try Later.", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 

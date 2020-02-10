@@ -30,6 +30,7 @@
             <include
                 android:id="@+id/job_start_date_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -41,20 +42,36 @@
                 android:layout_height="wrap_content" />
 
             <include
-                android:id="@+id/trucking_company_layout"
+                android:id="@+id/load_dot_layout"
                 layout="@layout/layout_job_detail_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
+                android:id="@+id/trucking_company_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content" />
+
+
+
+
+            <include
                 android:id="@+id/load_no_layout"
                 layout="@layout/layout_job_detail_card"
-
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/truck_no_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/load_type_name_layout"
                 layout="@layout/layout_job_detail_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -68,36 +85,31 @@
             <include
                 android:id="@+id/load_type_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <include
-                android:id="@+id/load_type_name_layout"
-                layout="@layout/layout_job_detail_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
-            <include
-                android:id="@+id/load_dot_layout"
-                layout="@layout/layout_job_detail_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
 
             <include
                 android:id="@+id/load_driver_no_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/load_truck_width_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/load_truck_height_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -116,12 +128,14 @@
             <include
                 android:id="@+id/total_gas_expense_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/total_gas_expense_deduction_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -134,12 +148,14 @@
             <include
                 android:id="@+id/total_motel_expense_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/total_motel_expense_deduction_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -152,12 +168,14 @@
             <include
                 android:id="@+id/total_other_expense_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/total_other_expense_deduction_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -166,6 +184,19 @@
                 layout="@layout/layout_job_detail_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_miles_travelled_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_pay_per_mile_cost_layout"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
 
             <include
                 android:id="@+id/total_day_rate_layout"
@@ -182,12 +213,14 @@
             <include
                 android:id="@+id/total_price_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/total_down_time_price_per_hour_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -204,73 +237,87 @@
                 android:layout_height="wrap_content" />
 
             <include
-                android:id="@+id/total_miles_travelled_layout"
-                layout="@layout/layout_job_detail_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                android:id="@+id/total_card_deduction_layout"
-                layout="@layout/layout_job_detail_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
-                android:id="@+id/total_pay_to_driver_layout"
-                layout="@layout/layout_job_detail_card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <include
                 android:id="@+id/cash_in_advance_layout"
                 layout="@layout/layout_job_detail_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
-                android:id="@+id/job_pay_per_mile_cost_layout"
+                android:id="@+id/job_give_cash"
                 layout="@layout/layout_job_detail_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
+                android:id="@+id/job_final_pay_driver"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <include
+                android:id="@+id/total_card_deduction_layout"
+                layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/total_pay_to_driver_layout"
+                layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+
+            <include
                 android:id="@+id/job_per_day_cost_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/job_no_goes_price_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/job_detention_price_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/end_trip_status_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/days_filled_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <include
                 android:id="@+id/job_comments_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <include
                 android:id="@+id/trucking_company_id_layout"
                 layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -282,6 +329,38 @@
 
             <include
                 android:id="@+id/job_truck_load_type_id_layout"
+                layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+
+            <include
+                android:id="@+id/job_remaining_cash_advance"
+                layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+
+            <include
+                android:id="@+id/job_payment_method"
+                layout="@layout/layout_job_detail_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_cheque_number"
+                layout="@layout/layout_job_detail_card"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/job_payment_date"
                 layout="@layout/layout_job_detail_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

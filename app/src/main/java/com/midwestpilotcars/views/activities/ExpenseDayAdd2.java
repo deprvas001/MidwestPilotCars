@@ -122,7 +122,7 @@ public class ExpenseDayAdd2 extends BaseActivity implements View.OnClickListener
             mile_travl_radio, more_gas_expense_radio, more_motel_expense_radio, more_other_expense_radio;
     String gas_expense_image = "", motel_expense_image = "", other_expense_image = "", down_expense_image = "",
             miles_expense_image = "", more_gas_image = "", more_motel_image = "", more_other_image = "";
-    int gas_cash = 1, motel_cash = 1, other_cash = 1, goes_day = 1, per_day = 1, more_gas_cash = 1, more_motel_cash = 1, more_other_cash = 1;
+    int gas_cash = 1, motel_cash = 2, other_cash = 1, goes_day = 1, per_day = 1, more_gas_cash = 1, more_motel_cash = 2, more_other_cash = 1;
     // Tag used to cancel the request
     String tag_json_obj = "json_obj_req";
     Intent intent;
@@ -131,7 +131,7 @@ public class ExpenseDayAdd2 extends BaseActivity implements View.OnClickListener
     List<DayMotelExpense> list_motel_expense;
     int total_days=0;
     String day_filled="",total_day="";
-    RadioButton gas_cash_button,gas_card_more,gas_card_button,motel_card_button,motel_card_more,other_card_button,other_card_more,option_mile_radio,option_mini_radio;
+    RadioButton gas_cash_button,gas_card_more,gas_card_button,motel_card_button,motel_cash_button,motel_card_more,other_card_button,other_card_more,option_mile_radio,option_mini_radio,option_per_mile;
      int position = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,6 +241,8 @@ public class ExpenseDayAdd2 extends BaseActivity implements View.OnClickListener
 
         motel_card_button = (RadioButton)view.findViewById(R.id.option_card_motel);
         motel_card_more = (RadioButton)view.findViewById(R.id.option_motel_card_more);
+        motel_cash_button =   (RadioButton)view.findViewById(R.id.option_cash_motel);
+
 
         motel_expense_radio = (RadioGroup) view.findViewById(R.id.option_group_motel);
         motel_descrp_comment = (EditText) view.findViewById(R.id.et_motel_comment);
@@ -314,6 +316,8 @@ public class ExpenseDayAdd2 extends BaseActivity implements View.OnClickListener
         mini_descp = (EditText)view.findViewById(R.id.et_mini_comment_decp);
         option_mile_radio = (RadioButton)view.findViewById(R.id.option_mile_radio);
         option_mini_radio = (RadioButton)view.findViewById(R.id.option_mini_radio);
+        option_per_mile = (RadioButton)view.findViewById(R.id.option_day_radio);
+
         gas_expense_radio.setOnCheckedChangeListener(this);
         motel_expense_radio.setOnCheckedChangeListener(this);
         other_expense_radio.setOnCheckedChangeListener(this);
@@ -1135,6 +1139,9 @@ try {
                                         if (payment.equals("2")) {
                                             motel_cash = 2;
                                             motel_card_button.setChecked(true);
+                                        }else{
+                                            motel_cash = 1;
+                                            motel_cash_button.setChecked(true);
                                         }
                                     }
                                 }else if(i == 1){
@@ -1163,6 +1170,9 @@ try {
                                         if (payment.equals("2")) {
                                             more_motel_cash = 2;
                                             motel_card_more.setChecked(true);
+                                        }else{
+                                            motel_cash = 1;
+                                            motel_cash_button.setChecked(true);
                                         }
                                     }
                                 }
@@ -1226,18 +1236,19 @@ try {
                             }
 
                             et_mile_expense.setText(data.getMiles_travelled());
+                           // Toast.makeText(ExpenseDayAdd2.this, data.getMiles_travelled(), Toast.LENGTH_SHORT).show();
                             String comment_mile = data.getMiles_travlled_comment();
                             if(!comment_mile.isEmpty()){
                                 mile_descrp_comment.setText(data.getMiles_travlled_comment());
                                 mile_descrp_comment.setVisibility(View.VISIBLE);
                             }
-
+                             mini_amount.setText(data.getMini_amount());
                              String costing =  data.getCosting_form();
                              if(!costing.isEmpty()){
                                  if(costing.equals("2")){
                                      per_day = 2;
                                      mini_descp.setText(null);
-                                   //  option_mile_radio.setChecked(true);
+                                      option_per_mile.setChecked(true);
                                  }else if(costing.equals("1")){
                                      per_day = 1;
                                      mini_descp.setText(null);

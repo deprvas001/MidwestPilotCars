@@ -537,10 +537,16 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
                         }
 
                         if (Utils.Companion.isNetworkAvailable(this)){
-                            if(validateAmount(driverAmount,allDayAmount)){
-                                //  sendRequest(ja, jason_motel, jason_other);
-                                Toast.makeText(this, "Request Success", Toast.LENGTH_SHORT).show();
+
+                            if(cash_advance == 1 && cash_amount_et.getText().toString().isEmpty()){
+                                Toast.makeText(this, "Please enter amount in give back field.", Toast.LENGTH_SHORT).show();
+                            }else{
+                                if(validateAmount(driverAmount,allDayAmount)){
+                                    sendRequest(ja, jason_motel, jason_other);
+                                    //   Toast.makeText(this, "Request Success", Toast.LENGTH_SHORT).show();
+                                }
                             }
+
                         } else
                             DialogUtils.showNoInternetDialog(this, new DialogInterface.OnClickListener() {
                                 @Override
@@ -1103,6 +1109,16 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
         activityBackTripBinding.dayExpenseLayout.totalMiniPay.setText(
                 getString(R.string.total_mini_pay) +" : $"+dayAmount.getTotal_mini_pay());
 
+        if(dayAmount.getTotal_day_no_goes_price()!=null){
+            activityBackTripBinding.dayExpenseLayout.totalNoGoPay.setText(
+                    getString(R.string.total_no_goes_price) +" : $"+dayAmount.getTotal_day_no_goes_price());
+        }else{
+            activityBackTripBinding.dayExpenseLayout.totalNoGoPay.setText(
+                    getString(R.string.total_no_goes_price) +" : $0");
+        }
+
+
+
         activityBackTripBinding.dayExpenseLayout.mainTotalDownTimePriceTxt.setText(
                 getString(R.string.total_down_time_pay) +" : $"+dayAmount.getMain_total_down_time_price());
 
@@ -1146,12 +1162,14 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
             total_pay_driver="0";
         }
 
-        activityBackTripBinding.dayPrice.perMileCost.setText(getString(R.string.per_mile)+" - $"+
+        activityBackTripBinding.dayPrice.perMileCost.setText(getString(R.string.per_mile_cost)+" - $"+
                 dayAmount.getJob_pay_per_mile());
         activityBackTripBinding.dayPrice.jobDayRate.setText(getString(R.string.day_rate)+ " - $"+
                 dayAmount.getJob_day_rate());
         activityBackTripBinding.dayPrice.jobNoGoesPrice.setText(getString(R.string.no_go_price) +
                 " - $ "+dayAmount.getJob_no_go_price());
+
+        validateAmount(driverAmount,allDayAmount);
 
     }
 
@@ -1173,8 +1191,11 @@ public class BackTrip extends BaseActivity implements View.OnClickListener, Radi
 
         String amount = activityBackTripBinding.advanceLayout.cashAmountEdittext.getText().toString();
 
+         if(!amount.isEmpty())
         activityBackTripBinding.dayExpenseLayout.giveBackCash.setText(getString(R.string.give_back_cash)+ " - $"+amount);
-
+        else{
+             activityBackTripBinding.dayExpenseLayout.giveBackCash.setText(getString(R.string.give_back_cash)+ " - $0");
+         }
         String advance_owned = data.getWalletData().getWallet_amount();
         if(!advance_owned.isEmpty() && advance_owned !=null){
             int_advance_owned = Float.parseFloat(advance_owned);

@@ -44,6 +44,54 @@ public class CompleteJob {
     private String total_card_deduction="";
     private String total_pay_to_driver="";
     private String cash_in_advance="";
+    private String extra_pay_to_driver="";
+    private String give_back_cash="";
+    private String payment_method="";
+    private String cheque_number="";
+    private String payment_date="";
+
+    public String getCheque_number() {
+        return cheque_number;
+    }
+
+    public void setCheque_number(String cheque_number) {
+        this.cheque_number = cheque_number;
+    }
+
+    public String getPayment_date() {
+        return payment_date;
+    }
+
+    public void setPayment_date(String payment_date) {
+        this.payment_date = payment_date;
+    }
+
+    public String getExtra_pay_to_driver() {
+        return extra_pay_to_driver;
+    }
+
+    public void setExtra_pay_to_driver(String extra_pay_to_driver) {
+        this.extra_pay_to_driver = extra_pay_to_driver;
+    }
+
+    public String getGive_back_cash() {
+        return give_back_cash;
+    }
+
+    public void setGive_back_cash(String give_back_cash) {
+        this.give_back_cash = give_back_cash;
+    }
+
+    public String getPayment_method() {
+        return payment_method;
+    }
+
+    public void setPayment_method(String payment_method) {
+        this.payment_method = payment_method;
+    }
+
+
+
 
 
     public CompleteJob() {

@@ -34,7 +34,15 @@ public class AllDayAmount {
     private String total_other_expense_cash;
     private String main_wallet_amount;
     private String give_back_cash;
+    private String total_day_no_goes_price;
 
+    public String getTotal_day_no_goes_price() {
+        return total_day_no_goes_price;
+    }
+
+    public void setTotal_day_no_goes_price(String total_day_no_goes_price) {
+        this.total_day_no_goes_price = total_day_no_goes_price;
+    }
 
     public String getTotal_motel_expense_card() {
         return total_motel_expense_card;

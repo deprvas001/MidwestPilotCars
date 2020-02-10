@@ -16,7 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14dp"
-        android:gravity="center"
         android:text="Day"
         android:textStyle="bold" />
 
@@ -51,5 +50,12 @@
         android:layout_below="@id/miles_travell_caluclate"/>
 
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/status_id"
+        android:background="@android:color/white"/>
 
 </RelativeLayout>

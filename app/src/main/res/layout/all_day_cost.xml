@@ -45,13 +45,21 @@
             android:layout_below="@id/total_day_rate"
             android:paddingTop="10dp" />
 
+        <TextView
+            android:id="@+id/total_no_go_pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_below="@id/total_mini_pay"
+            android:paddingTop="10dp" />
+
 
         <TextView
             android:id="@+id/main_total_down_time_price_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14dp"
-            android:layout_below="@id/total_mini_pay"
+            android:layout_below="@id/total_no_go_pay"
             android:paddingTop="10dp" />
 
         <TextView

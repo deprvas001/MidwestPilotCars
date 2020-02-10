@@ -51,25 +51,25 @@ public class AllDayExpenseAdapter extends RecyclerView.Adapter<AllDayExpenseAdap
             if(day.getChoose_costing_from().equals("1")){
                 holder.day_wise_rate.setVisibility(View.GONE);
                 holder.mile_travel_calulate.setVisibility(View.VISIBLE);
-                holder.costing_from.setText("Form of Payment  : Per Mile " );
+                holder.costing_from.setText("Form of Payment-Per Mile " );
                 holder.mile_travel_calulate.setText(
-                        "No. Of Mile Travelled = "+ day.getNo_of_miles_travelled()+ "\n"+
-                        "Day Wise Day Rate : "+
-                        "No. Of Mile Travelled"+ " * Per Mile "
-                        +" = $ "+day.getDay_wise_day_rate() );
+                        "Miles Travelled = "+ day.getNo_of_miles_travelled()+ "\n"+
+                        "Day Rate : "+
+                        "(No. of miles travelled"+ " * per mile cost)"
+                        +" = $"+day.getDay_wise_day_rate() );
             }else if(day.getChoose_costing_from().equals("2")){
-                holder.costing_from.setText("Choose Costing From : Per Day " );
+                holder.costing_from.setText("Form of Payment-Per Day " );
                 holder.day_wise_rate.setVisibility(View.VISIBLE);
-                holder.day_wise_rate.setText("Day Wise Day Rate : $"+day.getDay_wise_day_rate());
+                holder.day_wise_rate.setText("Day Rate-$"+day.getDay_wise_day_rate());
             }else{
                 holder.day_wise_rate.setVisibility(View.VISIBLE);
-                holder.costing_from.setText("Choose Costing From : Mini Cost" );
-                holder.day_wise_rate.setText("Day Wise Day Rate : $"+day.getDay_wise_day_rate());
+                holder.costing_from.setText("Form of Payment-Mini" );
+                holder.day_wise_rate.setText("Day Rate-$"+day.getDay_wise_day_rate());
             }
         }else{
-            holder.no_go_price.setText("No Go Day : Yes" );
+            holder.no_go_price.setText("No Go Day." );
             holder.no_go_price.setVisibility(View.VISIBLE);
-            holder.day_wise_rate.setText("Day Wise Day Rate : $"+day.getDay_wise_day_rate());
+            holder.day_wise_rate.setText("Day Rate-$"+day.getDay_wise_day_rate());
         }
 
     }

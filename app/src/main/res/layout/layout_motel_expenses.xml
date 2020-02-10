@@ -96,12 +96,12 @@
             android:id="@+id/option_card_motel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/option_card" />
 
         <RadioButton
             android:id="@+id/option_cash_motel"
             android:layout_width="wrap_content"
-            android:checked="true"
             android:layout_height="wrap_content"
             android:text="@string/option_cash" />
 
@@ -227,10 +227,11 @@
                 android:id="@+id/option_motel_card_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/option_card" />
 
             <RadioButton
-                android:checked="true"
+
                 android:id="@+id/option_motel_cash_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

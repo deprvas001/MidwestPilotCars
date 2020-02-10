@@ -131,7 +131,7 @@ public class ExpenseDayAdd extends BaseActivity implements View.OnClickListener,
             mile_travl_radio, more_gas_expense_radio, more_motel_expense_radio, more_other_expense_radio;
     String gas_expense_image = "", motel_expense_image = "", other_expense_image = "", down_expense_image = "",
             miles_expense_image = "", more_gas_image = "", more_motel_image = "", more_other_image = "";
-    int gas_cash = 1, motel_cash = 1, other_cash = 1, goes_day = 1, per_day = 1, more_gas_cash = 1, more_motel_cash = 1, more_other_cash = 1;
+    int gas_cash = 1, motel_cash = 2, other_cash = 1, goes_day = 1, per_day = 1, more_gas_cash = 1, more_motel_cash = 2, more_other_cash = 1;
     // Tag used to cancel the request
     String tag_json_obj = "json_obj_req";
     Intent intent;
