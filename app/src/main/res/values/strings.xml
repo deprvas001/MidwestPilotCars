@@ -205,4 +205,5 @@
     <string name="validate_message">Give Back should be less than or equal to Main Wallet Amount and Total Driver Pay.</string>
     <string name="verify"><u>Confirm</u></string>
     <string name="total_no_goes_price">Total-No-Go Pay</string>
+    <string name="client_policy">The driver signing this sheet is signing in agreement to the listed prices and doing so acting on behalf of his/her company in which they work for or own. By signing this confirmation as the acting agent you are agreeing on behalf of you company, that the services have been rendered and any mediation or lawsuits brought to as a result of non payment will be made in the State of South Dakota, and all legal fees will be paid by the client, IE you.</string>
 </resources>

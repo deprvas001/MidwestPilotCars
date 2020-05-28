@@ -888,7 +888,7 @@ public class ExpenseDayAdd extends BaseActivity implements View.OnClickListener,
         try {
             showProgressDialog("Please wait...");
             String token = SharedPreferenceHelper.Companion.getInstance().getUserData(this).getData().getAuthenticateToken();
-            String URL = "http://webfume.net/jasonapp/api/dayexpense";
+            String URL = "http://midwestpilotcars.com/api/dayexpense";
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             //   RequestQueue requestQueue = Volley.newRequestQueue(this);
             JSONObject params = new JSONObject();

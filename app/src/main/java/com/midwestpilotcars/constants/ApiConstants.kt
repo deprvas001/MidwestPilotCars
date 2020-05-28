@@ -12,6 +12,6 @@ const val KEY_AUTH_TOKEN = "AuthenticateToken"
     const val SOURCES = "APP"
     const val USER_TYPE = "DRIVER"
     const val DEVICE_TYPE= "ANDROID"
-    const val BASE_URL = "http://webfume.net/jasonapp/api/"
+    const val BASE_URL = "http://midwestpilotcars.com/api/"
 
 }

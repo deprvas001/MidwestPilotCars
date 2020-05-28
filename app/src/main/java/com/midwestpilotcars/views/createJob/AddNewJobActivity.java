@@ -163,7 +163,7 @@ public class AddNewJobActivity extends BaseActivity implements View.OnClickListe
             isAllFill = true;
         }
 
-        if(TextUtils.isEmpty(activityAddNewJobBinding.etSelectDate.getText())){
+        if(TextUtils.isEmpty(activityAddNewJobBinding.etLoadType.getText())){
             activityAddNewJobBinding.loadTypeView.setVisibility(View.VISIBLE);
          //   activityAddNewJobBinding.etLoadType.setError("Please select load type");
             isAllFill = false;
@@ -380,7 +380,7 @@ public class AddNewJobActivity extends BaseActivity implements View.OnClickListe
             try {
                 showProgressDialog("Please wait...");
                 String token = SharedPreferenceHelper.Companion.getInstance().getUserData(this).getData().getAuthenticateToken();
-                String URL = "http://webfume.net/jasonapp/api/postJobs";
+                String URL = "http://midwestpilotcars.com/api/postJobs";
                 RequestQueue requestQueue = Volley.newRequestQueue(this);
                 //   RequestQueue requestQueue = Volley.newRequestQueue(this);
                 JSONObject params = new JSONObject();

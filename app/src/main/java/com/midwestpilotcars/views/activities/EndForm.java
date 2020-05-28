@@ -630,7 +630,7 @@ public class EndForm extends BaseActivity implements View.OnClickListener, DateP
     public void sendData(String odometer_reading, String location, String date, String date_feed, String extra, String extra_descp, String image_url) {
         try {
             String token = SharedPreferenceHelper.Companion.getInstance().getUserData(this).getData().getAuthenticateToken();
-            String URL = "http://webfume.net/jasonapp/api/endjobwithVehicleData";
+            String URL = "http://midwestpilotcars.com/api/endjobwithVehicleData";
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             JSONObject params = new JSONObject();
             params.put("job_pilot_vehile_final_odometer_reading", odometer_reading);

@@ -259,10 +259,10 @@ class StartJobActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.
             DialogUtils.showAlertDialog(this, getString(R.string.empty_start_location))
             return
         }
-        if (startJobRequestModel.jobPilotDriverStartLocationLatitude.isEmpty() || startJobRequestModel.jobPilotDriverStartLocationLongitude.isEmpty()) {
+       /* if (startJobRequestModel.jobPilotDriverStartLocationLatitude.isEmpty() || startJobRequestModel.jobPilotDriverStartLocationLongitude.isEmpty()) {
             DialogUtils.showAlertDialog(this, getString(R.string.empty_start_location_coordinates))
             return
-        }
+        }*/
         if (activityStartJobBinding.etSelectDate.text.isEmpty()) {
             DialogUtils.showAlertDialog(this, getString(R.string.empty_date))
             return
@@ -284,7 +284,6 @@ class StartJobActivity : BaseActivity(), View.OnClickListener, DatePickerDialog.
             return
         } else {
             startJobCall()
-
         }
     }
 

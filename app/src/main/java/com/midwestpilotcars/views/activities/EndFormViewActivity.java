@@ -119,8 +119,24 @@ ImageButton submit;
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(EndFormViewActivity.this, SignatureScreen.class);
-                startActivityForResult(i, 1);
+                builder = new AlertDialog.Builder(EndFormViewActivity.this);
+                builder.setMessage(getString(R.string.client_policy))
+                        .setCancelable(false)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                Intent i = new Intent(EndFormViewActivity.this, SignatureScreen.class);
+                                startActivityForResult(i, 1);
+                            }
+                        });
+
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+              // alert.setTitle("?");
+                alert.show();
+
+
             }
         });
 
@@ -279,7 +295,7 @@ ImageButton submit;
         showProgressDialog("Please wait...");
         try {
             String token = SharedPreferenceHelper.Companion.getInstance().getUserData(this).getData().getAuthenticateToken();
-            String URL = "http://webfume.net/jasonapp/api/endjobwithSignature";
+            String URL = "http://midwestpilotcars.com/api/endjobwithSignature";
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             //   RequestQueue requestQueue = Volley.newRequestQueue(this);
             JSONObject params = new JSONObject();
